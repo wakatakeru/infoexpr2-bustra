@@ -3,8 +3,8 @@
 情報環境実験２の作成課題です
 
 ## 実行方法
-1. ソースをコンパイルする
-`javac Bustra.java`
+1. ソースをコンパイルする  
+   `javac Bustra.java`
 
-2. 実行する
-`java Bustra`
+2. 実行する  
+   `java Bustra`
