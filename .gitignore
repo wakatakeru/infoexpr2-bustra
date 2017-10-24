@@ -1,5 +1,5 @@
 
-# Created by https://www.gitignore.io/api/vim,java,macos,emacs
+# Created by https://www.gitignore.io/api/git,vim,java,macos,emacs
 
 ### Emacs ###
 # -*- mode: gitignore; -*-
@@ -67,6 +67,9 @@ company-statistics-cache.el
 # anaconda-mode
 anaconda-mode/
 
+### Git ###
+*.orig
+
 ### Java ###
 # Compiled class file
 *.class
@@ -131,4 +134,4 @@ Session.vim
 # auto-generated tag files
 tags
 
-# End of https://www.gitignore.io/api/vim,java,macos,emacs
+# End of https://www.gitignore.io/api/git,vim,java,macos,emacs
