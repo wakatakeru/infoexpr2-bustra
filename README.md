@@ -4,7 +4,7 @@
 
 ## 実行方法
 1. ソースをコンパイルする  
-   `javac Bustra.java`
+   `javac -encoding UTF-8 Bustra.java`
 
 2. 実行する  
    `java Bustra`
