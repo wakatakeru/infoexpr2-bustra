@@ -1,5 +1,9 @@
 package bustra;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -9,6 +13,11 @@ public class Base extends JPanel {
     setPreferredSize(new Dimension(240, 320));
   }
 
+  @Override
+  public void paint(Graphics g) {
+
+  }
+  
   public static void main(String args[]) {
     SwingUtilities.invokeLater(() -> {
       JFrame frame = new JFrame("Bustra!");       
