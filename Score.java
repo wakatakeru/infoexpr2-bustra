@@ -1,3 +1,5 @@
+package bustra;
+
 public class Score {
   private int point;
   

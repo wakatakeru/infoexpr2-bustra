@@ -1,3 +1,5 @@
+package bustra;
+
 import java.awt.Color;
 
 public class Block {

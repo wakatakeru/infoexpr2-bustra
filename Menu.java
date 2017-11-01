@@ -1,3 +1,5 @@
+package bustra;
+
 public class Menu {
   private int boardSize;
   
