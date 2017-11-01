@@ -3,7 +3,7 @@ package bustra;
 public class Score {
   private int point;
   
-  public Score {
+  public Score() {
     point = 0;
   }
 

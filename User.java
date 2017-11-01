@@ -5,7 +5,7 @@ import java.awt.event.KeyListener;
 import static java.awt.event.KeyEvent.*;
 
 public class User implements KeyListener {
-  public User {
+  public User() {
     addKeyListener(this);  
   }
 

@@ -3,7 +3,7 @@ package bustra;
 public class Menu {
   private int boardSize;
   
-  public Menu {
+  public Menu() {
     boardSize = 0;
   }
 
