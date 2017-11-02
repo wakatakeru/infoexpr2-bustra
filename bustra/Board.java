@@ -4,7 +4,7 @@ public class Board {
   private int size;
   private int eraseBlocksCount = 0;
   private int erasingCount = 0;
-  // private Block[][] blocks;
+  private Block[][] blocks;
  
   public Board(int boardSize) {
     this.size = boardSize;
