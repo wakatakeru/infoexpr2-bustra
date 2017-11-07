@@ -1,9 +1,15 @@
 package bustra;
 
 import java.awt.Color;
+import java.awt.Graphics;
+
 import java.util.Random;
 
-public class Block {
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+
+public class Block extends JPanel {
   private static Color face;
   private static int RANGE_OF_COLOR = 4;
 
@@ -17,6 +23,12 @@ public class Block {
     return face;
   }
 
+  public void paint(Graphics g) {
+    g.setColor(this.getRandomColor());
+    g.fillOval(0, 0, 64, 64);
+    
+  }
+  
   // ランダムな色を生成するメソッド
   private static Color getRandomColor() {
     Random rand = new Random();
@@ -42,7 +54,15 @@ public class Block {
 
   // テスト用のメインメソッド
   public static void main(String args[]) {
-    Block block = new Block();
-    System.out.println(block.getFace());
+    SwingUtilities.invokeLater(() -> {
+      JFrame frame = new JFrame("Bustra!");       
+
+      frame.add(new Block());
+      frame.pack();
+      frame.setVisible(true);
+
+      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      });
   }
 }
+
