@@ -1,4 +1,4 @@
-﻿package bustra;
+package bustra;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -10,7 +10,8 @@ public class User implements KeyListener {
   
   //-- フィールド
   private int score;
-  private Map<Character, Integer> position = new HashMap<Character, Integer>();
+  private Score user_score = new Score();
+  private Map<String, Integer> position = new HashMap<String, Integer>();
   
   //-- コンストラクタ
   public User() {
@@ -18,8 +19,8 @@ public class User implements KeyListener {
     addKeyListener(this);
     
     score = 0;
-    position.put(x, 0);
-    position.put(y, 0);
+    position.put("x", 0);
+    position.put("y", 0);
     
   }
 
@@ -34,7 +35,7 @@ public class User implements KeyListener {
       case VK_UP:    return 2;    // up
       case VK_DOWN:  return 3;    // down
       case VK_SPACE: return 4;    // space
-      case default:  return 5;    // another key
+      default:       return 5;    // another key
       
     }
     
@@ -45,12 +46,12 @@ public class User implements KeyListener {
     
     switch ( getHand() ) {
       
-      case 0: position.put(x, position.get(x) + 1); break;  // right
-      case 1: position.put(x, position.get(x) - 1); break;  // left
-      case 2: position.put(y, position.get(y) - 1); break;  // up
-      case 3: position.put(y, position.get(y) + 1); break;  // down
+      case 0: position.put("x", position.get("x") + 1); break;  // right
+      case 1: position.put("x", position.get("x") - 1); break;  // left
+      case 2: position.put("y", position.get("y") - 1); break;  // up
+      case 3: position.put("y", position.get("y") + 1); break;  // down
       
-      case default: /* do not move */ break;
+      default: /* do not move */ break;
       
     }
     
@@ -58,17 +59,17 @@ public class User implements KeyListener {
     
   }
 
-  // Scoreクラスからpointを取り出す
+  // user_scoreを返却
   public int getScore() {
     
-    return getPoint();
+    return score;
     
   }
 
   // スコアにpointを加算 (true,falseの扱い)(getScoreとsetScoreの明確な役割)
-  private boolean setScore {
+  private boolean setScore() {
     
-    score += getScore();
+    score = user_score.getPoint();
     
     return true;
     
