@@ -41,10 +41,17 @@ public class User implements KeyListener {
     
   }
 
-  // キー入力によるpositionの移動を行った後positionを返却 (単にposition返すだけでも良い?)
+  // positionの返却
   public Map getPosition() {
     
-    switch ( getHand() ) {
+    return position;
+    
+  }
+  
+  // getHandで返却される整数値でのpositionの更新
+  public void movePosition(int hand) {
+    
+    switch ( hand ) {
       
       case 0: position.put("x", position.get("x") + 1); break;  // right
       case 1: position.put("x", position.get("x") - 1); break;  // left
@@ -55,11 +62,9 @@ public class User implements KeyListener {
       
     }
     
-    return position;
-    
   }
 
-  // user_scoreを返却
+  // scoreを返却
   public int getScore() {
     
     return score;
@@ -84,4 +89,5 @@ public class User implements KeyListener {
   public void keyReleased(KeyEvent e) {}
 
   public void keyTyped(KeyEvent e) {}
+
 }
