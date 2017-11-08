@@ -3,6 +3,9 @@ package bustra;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Point;
+
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -39,7 +42,20 @@ public class Board extends JPanel {
   }
 
   // detectLineを定義する
+  private ArrayList<Point> detectLine() {
+    ArrayList<Point> points = new ArrayList<Point>();
 
+    for ( int y = 0; y < size; y++ ) {
+      for ( int x = 1; x < size - 1; x++ ) {
+        if ( !blocks[x][y].isEqual(blocks[x - 1][y]) ) { continue; }
+        if ( !blocks[x][y].isEqual(blocks[x + 1][y]) ) { continue; }
+        points.add(new Point(x - 1, y));
+      }
+    }
+    
+    return points;
+  }
+  
   public void paint(Graphics g) {
     for (int y = 0; y < size; y++) {
       for (int x = 0; x < size; x++) {
@@ -47,6 +63,9 @@ public class Board extends JPanel {
         g.fillOval(x * this.blockSize, y * this.blockSize, this.blockSize, this.blockSize);
       } 
     }
+
+    // デバッグ出力
+    System.out.println(this.detectLine());
   }
   
   public static int getErasedBlocksCount() {
@@ -84,7 +103,7 @@ public class Board extends JPanel {
     SwingUtilities.invokeLater(() -> {
       JFrame frame = new JFrame("Board");
       
-      frame.add(new Board(10));
+      frame.add(new Board(5));
       frame.pack();
       frame.setVisible(true);
 
