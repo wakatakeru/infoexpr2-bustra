@@ -14,13 +14,11 @@ import javax.swing.SwingUtilities;
 import static java.awt.Color.*;
 
 public class Board extends JPanel {
-  // 定数はConstantsクラスに格納したい…したくない？
   private static final long serialVersionUID = 1L;
   private int size;
   private int eraseBlocksCount = 0;
   private int erasingCount = 0;
   private int blockSize;
-  private final int COMBO_LINE = 3;
   private Block[][] blocks;
   
   public Board(int boardSize) {
@@ -106,7 +104,7 @@ public class Board extends JPanel {
     x = (int)point.getX();
     y = (int)point.getY();
 
-    for ( dx = x; dx < x + COMBO_LINE; dx++ ) {
+    for ( dx = x; dx < x + Constants.COMBO_LINE; dx++ ) {
       blocks[dx][y] = null;
     }
     
@@ -121,7 +119,7 @@ public class Board extends JPanel {
     y = (int)point.getY();
 
     for ( dy = y - 1; dy >= 0; dy-- ) {
-      for ( dx = x; dx < x + COMBO_LINE; dx++ ) {
+      for ( dx = x; dx < x + Constants.COMBO_LINE; dx++ ) {
         blocks[dx][dy + 1] = blocks[dx][dy];
       }
     }
@@ -135,7 +133,7 @@ public class Board extends JPanel {
     
     x = (int)point.getX();
 
-    for ( dx = x; dx < x + COMBO_LINE; dx++ ) {
+    for ( dx = x; dx < x + Constants.COMBO_LINE; dx++ ) {
       blocks[dx][0] = new Block();    // ブロックが最後までずらされると一番上がブロック無しになるからy=0
     }
 
