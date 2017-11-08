@@ -39,9 +39,8 @@ public class Board extends JPanel {
 
     points = detectLine();
 
-    for ( int i = 0; i < points.size(); i++ ) {
-      eraseBlocks(points.get(i));      
-    }
+    eraseBlocks(points.get(0));      
+    slideBlocks(points.get(0));
     //---- デバッグ用プログラム終
     
     setPreferredSize(new Dimension(size * blockSize, size * blockSize));
@@ -89,24 +88,34 @@ public class Board extends JPanel {
     return 0;
   }
 
+  // 任意の点とその右隣の点をCOMBO_LINE個だけ削除するメソッド
   private boolean eraseBlocks(Point point) {
     int x, y;
     int dx;
 
     x = (int)point.getX();
     y = (int)point.getY();
-    
+
     for ( dx = x; dx < x + COMBO_LINE; dx++ ) {
       blocks[dx][y] = null;
     }
     
-    // 動作テスト
     return true;
   }
   
-  private static boolean slideBlocks() {
+  private boolean slideBlocks(Point point) {
+    int x, y;
+    int dx, dy;
+    
+    x = (int)point.getX();
+    y = (int)point.getY();
 
-    // 動作テスト
+    for ( dy = y - 1; dy >= 0; dy-- ) {
+      for ( dx = x; dx < x + COMBO_LINE; dx++ ) {
+        blocks[dx][dy + 1] = blocks[dx][dy];
+      }
+    }
+    
     return true;
   }
   
