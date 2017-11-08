@@ -36,10 +36,18 @@ public class Board extends JPanel {
   }
 
   // 未実装(Userクラスできたら作ります(はず))
-  public static boolean moveBlock(int hand) {
+  protected boolean moveBlock(int hand) {
     return true; 
   }
 
+  protected int getErasedBlocksCount() {
+    return eraseBlocksCount;
+  }
+
+  protected int getErasingCount() {
+    return erasingCount;
+  }
+  
   private boolean setupBoard() {
     ArrayList<Point> points = new ArrayList<Point>();
 
@@ -88,15 +96,6 @@ public class Board extends JPanel {
         g.fillOval(x * this.blockSize, y * this.blockSize, this.blockSize, this.blockSize);
       } 
     }
-  }
-
-  
-  public int getErasedBlocksCount() {
-    return eraseBlocksCount;
-  }
-
-  public int getErasingCount() {
-    return erasingCount;
   }
 
   // 任意の点とその右隣の点をCOMBO_LINE個だけ削除するメソッド
