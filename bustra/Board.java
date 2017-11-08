@@ -14,6 +14,7 @@ import javax.swing.SwingUtilities;
 import static java.awt.Color.*;
 
 public class Board extends JPanel {
+  // 定数はConstantsクラスに格納したい…したくない？
   private static final long serialVersionUID = 1L;
   private int size;
   private int eraseBlocksCount = 0;
@@ -27,31 +28,44 @@ public class Board extends JPanel {
     this.blockSize = Constants.BLOCKSIZE;
 
     blocks = new Block[boardSize][boardSize];
+
+    this.setupBoard();
     
+    setPreferredSize(new Dimension(size * blockSize, size * blockSize));
+    setFocusable(true);
+  }
+
+  // 未実装(Userクラスできたら作ります(はず))
+  public static boolean moveBlock(int hand) {
+    return true; 
+  }
+
+  private boolean setupBoard() {
+    ArrayList<Point> points = new ArrayList<Point>();
+
+    // ボードの初期化
     for ( int y = 0; y < size; y++ ) {
       for ( int x = 0; x < size; x++ ) {
         blocks[x][y] = new Block();
       }
     }
 
-    //---- デバッグ用プログラム
-    ArrayList<Point> points = new ArrayList<Point>();
-
+    // 初期ボードからの連検出
     points = detectLine();
 
-    eraseBlocks(points.get(0));      
-    slideBlocks(points.get(0));
-    //---- デバッグ用プログラム終
-    
-    setPreferredSize(new Dimension(size * blockSize, size * blockSize));
-    setFocusable(true);
+    // 連が検出されなくなるまで連の削除を続ける
+    while ( points.size() != 0 ) {
+      for ( int i = 0; i < points.size(); i++ ) {
+        eraseBlocks(points.get(i));      
+        slideBlocks(points.get(i));
+        appendBlocks(points.get(i));
+      }
+      points = detectLine();
+    }
+
+    return true;
   }
 
-  public static boolean moveBlock(int hand) {
-    return true; 
-  }
-
-  // detectLineを定義する
   private ArrayList<Point> detectLine() {
     ArrayList<Point> points = new ArrayList<Point>();
 
@@ -65,7 +79,7 @@ public class Board extends JPanel {
     
     return points;
   }
-  
+
   public void paint(Graphics g) {
     for (int y = 0; y < size; y++) {
       for (int x = 0; x < size; x++) {
@@ -75,17 +89,14 @@ public class Board extends JPanel {
       } 
     }
   }
-  
-  public static int getErasedBlocksCount() {
 
-    // 動作テスト
-    return 0;
+  
+  public int getErasedBlocksCount() {
+    return eraseBlocksCount;
   }
 
-  public static int getErasingCount() {
-    
-    // 動作テスト
-    return 0;
+  public int getErasingCount() {
+    return erasingCount;
   }
 
   // 任意の点とその右隣の点をCOMBO_LINE個だけ削除するメソッド
@@ -119,9 +130,16 @@ public class Board extends JPanel {
     return true;
   }
   
-  private static boolean appendBlocks() {
+  private boolean appendBlocks(Point point) {
+    int x;
+    int dx, dy;
+    
+    x = (int)point.getX();
 
-    // 動作テスト
+    for ( dx = x; dx < x + COMBO_LINE; dx++ ) {
+      blocks[dx][0] = new Block();    // ブロックが最後までずらされると一番上がブロック無しになるからy=0
+    }
+
     return true;
   }
 
@@ -130,7 +148,7 @@ public class Board extends JPanel {
     SwingUtilities.invokeLater(() -> {
       JFrame frame = new JFrame("Board");
       
-      frame.add(new Board(15));
+      frame.add(new Board(8));
       frame.pack();
       frame.setVisible(true);
 
