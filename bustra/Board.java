@@ -9,6 +9,7 @@ public class Board {
   public Board(int boardSize) {
     this.size = boardSize;
     setBoard(this.size);
+    setBoard(size);
   }
 
   public static boolean moveBlock(int hand) {
@@ -17,9 +18,13 @@ public class Board {
 
   // detectLineを定義する
   
-  public static boolean setBoard(int size) {
-
-    // 動作テスト
+  private static boolean setBoard(int size) {
+    for ( int i = 0 i < size; i++ ) {
+      for ( int j = 0; j < size; j++ ) {
+        blocks[i][j] = new Block();
+      }
+    }
+    
     return true;
   }
 

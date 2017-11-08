@@ -26,13 +26,13 @@ public class Block extends JPanel {
   public void paint(Graphics g) {
     g.setColor(this.getRandomColor());
     g.fillOval(0, 0, 64, 64);
-    
   }
   
   // ランダムな色を生成するメソッド
   private static Color getRandomColor() {
     Random rand = new Random();
     int sw = rand.nextInt(RANGE_OF_COLOR);
+
     Color color = Color.RED;
     
     switch ( sw ) {
@@ -65,4 +65,3 @@ public class Block extends JPanel {
       });
   }
 }
-
