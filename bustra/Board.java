@@ -19,8 +19,9 @@ public class Board extends JPanel {
   private int eraseBlocksCount = 0;
   private int erasingCount = 0;
   private int blockSize;
+  private final int COMBO_LINE = 3;
   private Block[][] blocks;
- 
+  
   public Board(int boardSize) {
     this.size = boardSize;
     this.blockSize = Constants.BLOCKSIZE;
@@ -33,6 +34,16 @@ public class Board extends JPanel {
       }
     }
 
+    //---- デバッグ用プログラム
+    ArrayList<Point> points = new ArrayList<Point>();
+
+    points = detectLine();
+
+    for ( int i = 0; i < points.size(); i++ ) {
+      eraseBlocks(points.get(i));      
+    }
+    //---- デバッグ用プログラム終
+    
     setPreferredSize(new Dimension(size * blockSize, size * blockSize));
     setFocusable(true);
   }
@@ -59,13 +70,11 @@ public class Board extends JPanel {
   public void paint(Graphics g) {
     for (int y = 0; y < size; y++) {
       for (int x = 0; x < size; x++) {
+        if ( blocks[x][y] == null ) { continue; }
         g.setColor(blocks[x][y].getFace());
         g.fillOval(x * this.blockSize, y * this.blockSize, this.blockSize, this.blockSize);
       } 
     }
-
-    // デバッグ出力
-    System.out.println(this.detectLine());
   }
   
   public static int getErasedBlocksCount() {
@@ -80,8 +89,17 @@ public class Board extends JPanel {
     return 0;
   }
 
-  private static boolean  eraseBlocks() {
+  private boolean eraseBlocks(Point point) {
+    int x, y;
+    int dx;
 
+    x = (int)point.getX();
+    y = (int)point.getY();
+    
+    for ( dx = x; dx < x + COMBO_LINE; dx++ ) {
+      blocks[dx][y] = null;
+    }
+    
     // 動作テスト
     return true;
   }
@@ -103,7 +121,7 @@ public class Board extends JPanel {
     SwingUtilities.invokeLater(() -> {
       JFrame frame = new JFrame("Board");
       
-      frame.add(new Board(5));
+      frame.add(new Board(15));
       frame.pack();
       frame.setVisible(true);
 
