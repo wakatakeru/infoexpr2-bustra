@@ -1,17 +1,31 @@
 package bustra;
 
 public class Score {
-  private int point;
-  
-  public Score() {
-    point = 0;
-  }
 
-  public static int getPoint() {
-    
-  }
+    //-- フィールド
+    private int point;
 
-  private static int calcPoint() {
-    
-  }
+    //-- コンストラクタ
+    public Score() {
+
+        point = 0;
+
+    }
+
+    //--メソッド
+    // calcPointを呼び出す
+    public static int getPoint() {
+
+        return calcPoint();
+
+    }
+
+    // 実際の得点の計算
+    private static int calcPoint() {
+
+	// pointは100点刻み(?)としたいと思いますがどうでしょうか？
+	point = getErasedBlockCount() * getErasingCount() * 1/2 * 100;
+	return point;
+
+    }
 }
