@@ -5,7 +5,6 @@ import java.awt.Graphics;
 
 public class Block {
   private Color face;
-  private static int RANGE_OF_COLOR = 4;
 
   // コンストラクタ
   public Block() {
@@ -30,7 +29,7 @@ public class Block {
     Color color = Color.RED;
 
     rand = Math.random();
-    sw = (int)(rand * RANGE_OF_COLOR);
+    sw = (int)(rand * Constants.RANGE_OF_COLOR);
     
     switch ( sw ) {
     case 0:
@@ -48,6 +47,4 @@ public class Block {
 
     return color;
   }
-
-  
 }
