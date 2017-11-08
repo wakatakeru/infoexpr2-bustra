@@ -3,37 +3,34 @@ package bustra;
 import java.awt.Color;
 import java.awt.Graphics;
 
-import java.util.Random;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-
-public class Block extends JPanel {
-  private static Color face;
+public class Block {
+  private Color face;
   private static int RANGE_OF_COLOR = 4;
 
   // コンストラクタ
   public Block() {
-    face = getRandomColor();
+    this.face = getRandomColor();
   }
 
   // ブロックの色を返却するメソッド
-  public static Color getFace() {
-    return face;
+  protected Color getFace() {
+    return this.face;
   }
 
-  public void paint(Graphics g) {
-    g.setColor(this.getRandomColor());
-    g.fillOval(0, 0, 64, 64);
+  // 対象のブロックが同じ色かどうかを判定する
+  protected boolean isEqual(Block block) {
+    if ( face != block.getFace() ) { return false; }
+    return true;
   }
   
   // ランダムな色を生成するメソッド
   private static Color getRandomColor() {
-    Random rand = new Random();
-    int sw = rand.nextInt(RANGE_OF_COLOR);
-
+    double rand;
+    int sw;
     Color color = Color.RED;
+
+    rand = Math.random();
+    sw = (int)(rand * RANGE_OF_COLOR);
     
     switch ( sw ) {
     case 0:
@@ -52,16 +49,5 @@ public class Block extends JPanel {
     return color;
   }
 
-  // テスト用のメインメソッド
-  public static void main(String args[]) {
-    SwingUtilities.invokeLater(() -> {
-      JFrame frame = new JFrame("Bustra!");       
-
-      frame.add(new Block());
-      frame.pack();
-      frame.setVisible(true);
-
-      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      });
-  }
+  
 }

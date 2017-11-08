@@ -1,15 +1,37 @@
 package bustra;
 
-public class Board {
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+
+import static java.awt.Color.*;
+
+public class Board extends JPanel {
+  private static final long serialVersionUID = 1L;
   private int size;
   private int eraseBlocksCount = 0;
   private int erasingCount = 0;
+  private int blockSize;
   private Block[][] blocks;
  
   public Board(int boardSize) {
     this.size = boardSize;
-    setBoard(this.size);
-    setBoard(size);
+    this.blockSize = Constants.BLOCKSIZE;
+
+    blocks = new Block[boardSize][boardSize];
+    
+    for ( int y = 0; y < size; y++ ) {
+      for ( int x = 0; x < size; x++ ) {
+        blocks[x][y] = new Block();
+      }
+    }
+
+    setPreferredSize(new Dimension(size * blockSize, size * blockSize));
+    setFocusable(true);
   }
 
   public static boolean moveBlock(int hand) {
@@ -17,17 +39,16 @@ public class Board {
   }
 
   // detectLineを定義する
-  
-  private static boolean setBoard(int size) {
-    for ( int i = 0 i < size; i++ ) {
-      for ( int j = 0; j < size; j++ ) {
-        blocks[i][j] = new Block();
-      }
-    }
-    
-    return true;
-  }
 
+  public void paint(Graphics g) {
+    for (int y = 0; y < size; y++) {
+      for (int x = 0; x < size; x++) {
+        g.setColor(blocks[x][y].getFace());
+        g.fillOval(x * this.blockSize, y * this.blockSize, this.blockSize, this.blockSize);
+      } 
+    }
+  }
+  
   public static int getErasedBlocksCount() {
 
     // 動作テスト
@@ -60,6 +81,14 @@ public class Board {
 
   // デバッグ用メイン関数
   public static void main(String args[]) {
-    Board board = new Board(10);
+    SwingUtilities.invokeLater(() -> {
+      JFrame frame = new JFrame("Board");
+      
+      frame.add(new Board(10));
+      frame.pack();
+      frame.setVisible(true);
+
+      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    });
   }
 }
