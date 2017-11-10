@@ -1,8 +1,6 @@
 package bustra;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import static java.awt.event.KeyEvent.*;
+import java.awt.Point;
 
 import java.util.*;  // Mapで必要?
 
@@ -11,12 +9,10 @@ public class User implements KeyListener {
   //-- フィールド
   private int score;
   private Score user_score = new Score();
-  private Map<String, Integer> position = new HashMap<String, Integer>();
+  private Point position;
   
   //-- コンストラクタ
   public User() {
-    
-    addKeyListener(this);
     
     score = 0;
     position.put("x", 0);
@@ -25,22 +21,6 @@ public class User implements KeyListener {
   }
 
   //-- メソッド
-  // キー入力をint型に変換 (他キーも追加可能) (現時点での return 5　の有無相談)
-  public int getHand(KeyEvent e) {
-    
-    switch ( e ) {
-      
-      case VK_RIGHT: return 0;    // right
-      case VK_LEFT:  return 1;    // left
-      case VK_UP:    return 2;    // up
-      case VK_DOWN:  return 3;    // down
-      case VK_SPACE: return 4;    // space
-      default:       return 5;    // another key
-      
-    }
-    
-  }
-
   // positionの返却
   public Map getPosition() {
     
@@ -79,15 +59,5 @@ public class User implements KeyListener {
     return true;
     
   }
-
-  //-- keyListener
-  // keypress時の処理をどうするか
-  public void keyPressed(KeyEvent e) {
-    int key = e.getKeyCode();
-  }
-
-  public void keyReleased(KeyEvent e) {}
-
-  public void keyTyped(KeyEvent e) {}
 
 }
