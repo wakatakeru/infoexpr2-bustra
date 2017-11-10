@@ -1,42 +1,41 @@
 package bustra;
 
 import java.awt.Point;
+import java.awt.event.KeyEvent;
 
-import java.util.*;  // Mapで必要?
-
-public class User implements KeyListener {
+public class User {
   
   //-- フィールド
   private int score;
-  private Score user_score = new Score();
+  private Score user_score;
   private Point position;
   
   //-- コンストラクタ
   public User() {
     
     score = 0;
-    position.put("x", 0);
-    position.put("y", 0);
+    user_score = new Score();
+    position = new Point();
     
   }
 
   //-- メソッド
   // positionの返却
-  public Map getPosition() {
+  public Point getPosition() {
     
     return position;
     
   }
   
-  // getHandで返却される整数値でのpositionの更新
-  public void movePosition(int hand) {
+  // key入力によるpositionの更新
+  public void movePosition(int key) {
     
-    switch ( hand ) {
+    switch ( key ) {
       
-      case 0: position.put("x", position.get("x") + 1); break;  // right
-      case 1: position.put("x", position.get("x") - 1); break;  // left
-      case 2: position.put("y", position.get("y") - 1); break;  // up
-      case 3: position.put("y", position.get("y") + 1); break;  // down
+      case VK_RIGHT: position.x++; break;  // right
+      case VK_LEFT:  position.x--; break;  // left
+      case VK_UP:    position.y--; break;  // up
+      case VK_DOWN:  position.y++; break;  // down
       
       default: /* do not move */ break;
       
