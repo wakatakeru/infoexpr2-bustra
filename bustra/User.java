@@ -32,10 +32,10 @@ public class User {
     
     switch ( key ) {
       
-      case VK_RIGHT: position.x++; break;  // right
-      case VK_LEFT:  position.x--; break;  // left
-      case VK_UP:    position.y--; break;  // up
-      case VK_DOWN:  position.y++; break;  // down
+      case VK_RIGHT: point.move(point.getX()+1, point,getY()); break;  // right
+      case VK_LEFT:  point.move(point.getX()-1, point,getY()); break;  // left
+      case VK_UP:    point.move(point.getX(), point,getY()-1); break;  // up
+      case VK_DOWN:  point.move(point.getX(), point,getY()+1); break;  // down
       default: /* do not move */ break;
       
     }
