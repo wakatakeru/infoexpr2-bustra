@@ -7,14 +7,14 @@ public class User {
   
   //-- フィールド
   private int score;
-  private Score user_score;
+  private Score userScore;
   private Point position;
   
   //-- コンストラクタ
   public User() {
     
     score = 0;
-    user_score = new Score();
+    userScore = new Score();
     position = new Point();
     
   }
@@ -53,7 +53,7 @@ public class User {
   // スコアにpointを加算 (true,falseの扱い)(getScoreとsetScoreの明確な役割)
   private boolean setScore() {
     
-    score = user_score.getPoint();
+    score = userScore.getPoint();
     
     return true;
     
