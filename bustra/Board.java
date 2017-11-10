@@ -4,14 +4,14 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.Color.*;
+import java.awt.event.KeyEvent;
 
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-
-import static java.awt.Color.*;
 
 public class Board extends JPanel {
   private static final long serialVersionUID = 1L;
@@ -33,9 +33,37 @@ public class Board extends JPanel {
     setFocusable(true);
   }
 
-  // 未実装(Userクラスできたら作ります(はず))
-  protected boolean moveBlock(int hand) {
-    return true; 
+  protected boolean moveBlock(Point userPoint, int key) {
+    Point dp = new Point();
+
+    dp = userPoint;
+    
+    switch ( key ) {
+    case KeyEvent.VK_LEFT:
+      if ( userPoint.getX() - 1 < 0 ) { return false; }
+      dp.move((int)dp.getX() - 1, (int)dp.getY());
+      swapBlocks(userPoint, dp);
+      break;
+    case KeyEvent.VK_RIGHT: 
+      if ( userPoint.getX() + 1 > this.size ) { return false; }
+      dp.move((int)dp.getX() + 1, (int)dp.getY());
+      swapBlocks(userPoint, dp);
+      break;
+    case KeyEvent.VK_UP:
+      if ( userPoint.getY() - 1 < 0 ) { return false; }
+      dp.move((int)dp.getX(), (int)dp.getY() - 1);
+      swapBlocks(userPoint, dp);
+      break;
+    case KeyEvent.VK_DOWN:
+      if ( userPoint.getY() + 1 > this.size ) { return false; }
+      dp.move((int)dp.getX(), (int)dp.getY() + 1);
+      swapBlocks(userPoint, dp);
+      break;
+    default:
+      return false;
+    }
+
+    return true;
   }
 
   protected int getErasedBlocksCount() {
@@ -137,6 +165,16 @@ public class Board extends JPanel {
       blocks[dx][0] = new Block();    // ブロックが最後までずらされると一番上がブロック無しになるからy=0
     }
 
+    return true;
+  }
+
+  private boolean swapBlocks(Point p1, Point p2) {
+    Block tmp = new Block();
+
+    tmp = blocks[(int)p1.getX()][(int)p1.getY()];
+    blocks[(int)p1.getX()][(int)p1.getY()] = blocks[(int)p2.getX()][(int)p2.getY()];
+    blocks[(int)p2.getX()][(int)p2.getY()] = tmp;
+      
     return true;
   }
 
