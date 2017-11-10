@@ -36,7 +36,6 @@ public class User {
       case VK_LEFT:  position.x--; break;  // left
       case VK_UP:    position.y--; break;  // up
       case VK_DOWN:  position.y++; break;  // down
-      
       default: /* do not move */ break;
       
     }
@@ -54,7 +53,6 @@ public class User {
   private boolean setScore() {
     
     score = userScore.getPoint();
-    
     return true;
     
   }
