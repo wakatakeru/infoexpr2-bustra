@@ -1,35 +1,61 @@
 package bustra;
 
+import java.awt.Point;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import static java.awt.event.KeyEvent.*;
 
-public class User implements KeyListener {
+public class User {
+  
+  //-- フィールド
+  private int score;
+  private Score userScore;
+  private Point position;
+  
+  //-- コンストラクタ
   public User() {
-    addKeyListener(this);  
-  }
-
-  public static int getHand() {
-    // (0: right, 1: left, 2: up, 3: down, 4: space)
-  }
-
-  public static Map getPosition() {
-    // Map (key=x, y)
-  }
-
-  public static int getScore() {
+    
+    score = 0;
+    userScore = new Score();
+    position = new Point();
     
   }
 
-  private static boolean setScore() {
+  //-- メソッド
+  // positionの返却
+  public Point getPosition() {
     
-  } 
-
-  public void keyPressed(KeyEvent e) {
+    return position;
+    
+  }
+  
+  // key入力によるpositionの更新
+  public void movePosition(int key) {
+    
+    switch ( key ) {
+      
+      case KeyEvent.VK_RIGHT: position.move(position.x+1, position.y); break;  // right
+      case KeyEvent.VK_LEFT:  position.move(position.x-1, position.y); break;  // left
+      case KeyEvent.VK_UP:    position.move(position.x, position.y-1); break;  // up
+      case KeyEvent.VK_DOWN:  position.move(position.x, position.y+1); break;  // down
+      default: /* do not move */ break;
+      
+    }
     
   }
 
-  public void keyReleased(KeyEvent e) {}
+  // scoreをセットし返却
+  public int getScore() {
+    
+    setScore();
+    return score;
+    
+  }
 
-  public void keyTyped(KeyEvent e) {}
+  // スコアにpointを加算
+  private boolean setScore() {
+    
+    score = userScore.getPoint();
+    return true;
+    
+  }
+
 }
