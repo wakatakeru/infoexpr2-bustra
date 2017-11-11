@@ -14,18 +14,22 @@ public class Score {
 
     //--メソッド
     // calcPointを呼び出す
-    public static int getPoint() {
+    public int getPoint() {
 
         return calcPoint();
 
     }
 
     // 実際の得点の計算
-    private static int calcPoint() {
+    private int calcPoint() {
 
 	// pointは100点刻み(?)としたいと思いますがどうでしょうか？
-	point = getErasedBlockCount() * getErasingCount() * 1/2 * 100;
+	// 今はこういう感じのイメージです↓
+	// pointはコンボ数(消えたブロックの個数×消した回数)の半分
+	// 100点刻み
+	point = getErasedBlockCount() * getErasingCount() / 2 * 100;
 	return point;
 
     }
+
 }
