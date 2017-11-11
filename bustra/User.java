@@ -42,14 +42,15 @@ public class User {
     
   }
 
-  // scoreを返却
+  // scoreをセットし返却
   public int getScore() {
     
+    setScore();
     return score;
     
   }
 
-  // スコアにpointを加算 (true,falseの扱い)(getScoreとsetScoreの明確な役割)
+  // スコアにpointを加算
   private boolean setScore() {
     
     score = userScore.getPoint();
