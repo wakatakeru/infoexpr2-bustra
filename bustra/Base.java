@@ -33,6 +33,10 @@ public class Base extends JPanel {
   public void paint(Graphics g) {
     
   }
+
+  public void keyPressed(KeyEvent e) {}
+  public void keyReleased(KeyEvent e) {}
+  public void keyTyped(KeyEvent e) {}
   
   public static void main(String args[]) {
     SwingUtilities.invokeLater(() -> {
