@@ -8,14 +8,23 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import static java.awt.event.KeyEvent.*;
+
 public class Base extends JPanel {
+  private Board board;
+  private User player;
+
   public Base() {
+    
     setPreferredSize(new Dimension(240, 320));
   }
 
   @Override
   public void paint(Graphics g) {
-
+    
   }
   
   public static void main(String args[]) {
