@@ -110,6 +110,9 @@ public class Board extends JPanel {
         points.add(new Point(x - 1, y));
       }
     }
+
+    eraseBlocksCount = points.size() * Constants.COMBO_LINE;
+    erasingCount = points.size();
     
     return points;
   }
