@@ -100,7 +100,7 @@ public class Board extends JPanel {
     return true;
   }
 
-  private ArrayList<Point> detectLine() {
+  protected ArrayList<Point> detectLine() {
     ArrayList<Point> points = new ArrayList<Point>();
 
     for ( int y = 0; y < size; y++ ) {
@@ -128,7 +128,7 @@ public class Board extends JPanel {
   }
 
   // 任意の点とその右隣の点をCOMBO_LINE個だけ削除するメソッド
-  private boolean eraseBlocks(Point point) {
+  protected boolean eraseBlocks(Point point) {
     int x, y;
     int dx;
 
@@ -142,7 +142,7 @@ public class Board extends JPanel {
     return true;
   }
   
-  private boolean slideBlocks(Point point) {
+  protected boolean slideBlocks(Point point) {
     int x, y;
     int dx, dy;
     
@@ -158,7 +158,7 @@ public class Board extends JPanel {
     return true;
   }
   
-  private boolean appendBlocks(Point point) {
+ protected boolean appendBlocks(Point point) {
     int x;
     int dx, dy;
     
