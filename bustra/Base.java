@@ -14,18 +14,21 @@ import java.awt.event.KeyListener;
 
 import static java.awt.event.KeyEvent.*;
 
-public class Base extends JPanel {
+public class Base extends JPanel implements KeyListener {
   private Board board;
   private User player;
 
+  private int boardSize;
   private boolean toggle;
   
   public Base() {
     setPreferredSize(new Dimension(240, 320));
 
+    boardSize = 10;
+    
     // TODO: board size call by Constants Class
     // Temporary Board Size = 10
-    board = new Board(10);
+    board = new Board(boardSize);
     player = new User();
 
     toggle = false;
@@ -37,6 +40,7 @@ public class Base extends JPanel {
   @Override
   public void paint(Graphics g) {
     // 画像使うかどうか問題
+    board.paint(g);
   }
 
   public void keyPressed(KeyEvent e) {
@@ -71,6 +75,8 @@ public class Base extends JPanel {
       // movePositionにキーを渡してplayerを移動させる
       player.movePosition(key);
     }
+    
+    repaint();
   }
   
   public void keyReleased(KeyEvent e) {}
