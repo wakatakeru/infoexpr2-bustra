@@ -18,8 +18,15 @@ public class Base extends JPanel {
   private User player;
 
   public Base() {
-    
     setPreferredSize(new Dimension(240, 320));
+
+    // TODO: board size call by Constants Class
+    // Temporary Board Size = 10
+    board = new Board(10);
+    player = new User();
+
+    setFocusable(true);
+    addKeyListener(this);
   }
 
   @Override
