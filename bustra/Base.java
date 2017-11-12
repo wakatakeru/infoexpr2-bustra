@@ -9,6 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import java.util.ArrayList;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -50,15 +52,15 @@ public class Base extends JPanel implements KeyListener {
     
     // In GameかIn Menuかで処理変わりそう
     // ひとまずIn Gameの実装
-    switch ( sw ) {
+    switch ( key ) {
     case VK_SPACE:
       toggle = !toggle;
       if ( !toggle ) {
         //==== Determination Process
         // 消す場所の左端を取ってくる
         detectedLine = board.detectLine();
-        if ( detectedLine.size != 0 ) {
-          for ( int i = 0; i < detectedLine.size; i++ ) {
+        if ( detectedLine.size() != 0 ) {
+          for ( int i = 0; i < detectedLine.size(); i++ ) {
             // 消す連の左端の一つを取得
             erasingPoint = detectedLine.get(i);
 
