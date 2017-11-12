@@ -3,6 +3,7 @@ package bustra;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Point;    
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -17,6 +18,8 @@ public class Base extends JPanel {
   private Board board;
   private User player;
 
+  private boolean toggle;
+  
   public Base() {
     setPreferredSize(new Dimension(240, 320));
 
@@ -25,17 +28,53 @@ public class Base extends JPanel {
     board = new Board(10);
     player = new User();
 
+    toggle = false;
+    
     setFocusable(true);
     addKeyListener(this);
   }
 
   @Override
   public void paint(Graphics g) {
-    
+    // 画像使うかどうか問題
   }
 
-  public void keyPressed(KeyEvent e) {}
+  public void keyPressed(KeyEvent e) {
+    int key = e.getKeyCode();
+    Point erasingPoint = new Point();
+    ArrayList<Point> detectedLine = new ArrayList<Point>();
+    
+    // In GameかIn Menuかで処理変わりそう
+    // ひとまずIn Gameの実装
+    switch ( sw ) {
+    case VK_SPACE:
+      toggle = !toggle;
+      if ( !toggle ) {
+        //==== Determination Process
+        // 消す場所の左端を取ってくる
+        detectedLine = board.detectLine();
+        if ( detectedLine.size != 0 ) {
+          for ( int i = 0; i < detectedLine.size; i++ ) {
+            // 消す連の左端の一つを取得
+            erasingPoint = detectedLine.get(i);
+
+            // ボードの更新処理
+            board.eraseBlocks(erasingPoint);
+            board.slideBlocks(erasingPoint);
+            board.appendBlocks(erasingPoint);
+          }
+        }
+        // 得点更新する(Pending)
+      }
+      break;
+    default:
+      // movePositionにキーを渡してplayerを移動させる
+      player.movePosition(key);
+    }
+  }
+  
   public void keyReleased(KeyEvent e) {}
+
   public void keyTyped(KeyEvent e) {}
   
   public static void main(String args[]) {
