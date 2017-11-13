@@ -21,4 +21,6 @@
 
 ## 素材元
 
+参考 : Bustra.java (http://guppy.eng.kagawa-u.ac.jp/2017/InfoEnvExp2/Programs2/Bustra.java)
 
+使用 : 閉じる12 (https://sozai.cman.jp/icon/operation/close/)
