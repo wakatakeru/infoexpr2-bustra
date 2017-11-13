@@ -21,7 +21,7 @@ public class Score {
     }
 
     // 実際の得点の計算
-    private int calcPoint(int erasedBlockCount, int erasingCount) {
+    protected int calcPoint(int erasedBlockCount, int erasingCount) {
 
 	// pointは100点刻みで、
 	// コンボ数(消えたブロックの個数×消した回数)の半分
