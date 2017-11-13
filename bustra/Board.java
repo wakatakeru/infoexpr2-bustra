@@ -1,17 +1,17 @@
 package bustra;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Point;
-import java.awt.Color.*;
-import java.awt.event.KeyEvent;
-
 import java.util.ArrayList;
 
+import java.awt.Color;
+import java.awt.Color.*;
+import java.awt.Dimension;
+import java.awt.event.KeyEvent;
+import java.awt.Graphics;
+import java.awt.Point;
+
+import javax.swing.SwingUtilities;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 public class Board extends JPanel {
   private static final long serialVersionUID = 1L;
@@ -27,7 +27,7 @@ public class Board extends JPanel {
 
     blocks = new Block[boardSize][boardSize];
 
-    this.setupBoard();
+    this.initBoard();
     
     setPreferredSize(new Dimension(size * blockSize, size * blockSize));
     setFocusable(true);
@@ -74,7 +74,7 @@ public class Board extends JPanel {
     return erasingCount;
   }
   
-  private boolean setupBoard() {
+  private boolean initBoard() {
     ArrayList<Point> points = new ArrayList<Point>();
 
     // ボードの初期化
@@ -118,8 +118,8 @@ public class Board extends JPanel {
   }
 
   public void paint(Graphics g) {
-    for (int y = 0; y < size; y++) {
-      for (int x = 0; x < size; x++) {
+    for ( int y = 0; y < size; y++ ) {
+      for ( int x = 0; x < size; x++ ) {
         if ( blocks[x][y] == null ) { continue; }
         g.setColor(blocks[x][y].getFace());
         g.fillOval(x * this.blockSize, y * this.blockSize, this.blockSize, this.blockSize);
