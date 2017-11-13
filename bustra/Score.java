@@ -1,17 +1,34 @@
 package bustra;
 
 public class Score {
-  private int point;
-  
-  public Score() {
-    point = 0;
-  }
 
-  public static int getPoint() {
-    
-  }
+    //-- フィールド
+    private int point;
 
-  private static int calcPoint() {
-    
-  }
+    //-- コンストラクタ
+    public Score() {
+
+        point = 0;
+
+    }
+
+    //--メソッド
+    // pointを返却する
+    protected int getPoint() {
+
+	return point;
+
+    }
+
+    // 実際の得点の計算
+    protected int calcPoint(int erasedBlockCount, int erasingCount) {
+
+	// pointは100点刻みで、
+	// コンボ数(消えたブロックの個数×消した回数)の半分
+
+	point = erasedBlockCount * erasingCount / 2 * 100;
+	return point;
+
+    }
+
 }
