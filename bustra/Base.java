@@ -54,6 +54,7 @@ public class Base extends JPanel implements KeyListener {
     // ひとまずIn Gameの実装
     switch ( key ) {
     case VK_SPACE:
+      System.out.println("SPACE");
       toggle = !toggle;
       if ( !toggle ) {
         //==== Determination Process
@@ -75,6 +76,8 @@ public class Base extends JPanel implements KeyListener {
       break;
     default:
       // movePositionにキーを渡してplayerを移動させる
+      System.out.println(key);
+      System.out.println(board.moveBlock(player.getPosition(), key));
       player.movePosition(key);
     }
     
