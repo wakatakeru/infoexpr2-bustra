@@ -16,7 +16,6 @@ public class Score {
     // pointを返却する
     public int getPoint() {
 
-        point = calcPoint(getErasedBlockCount(),  getErasingCount());
 	return point;
 
     }
