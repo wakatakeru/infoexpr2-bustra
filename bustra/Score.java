@@ -14,7 +14,7 @@ public class Score {
 
     //--メソッド
     // pointを返却する
-    public int getPoint() {
+    protected int getPoint() {
 
 	return point;
 
