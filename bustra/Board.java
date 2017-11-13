@@ -20,19 +20,23 @@ public class Board extends JPanel {
   private int erasingCount = 0;
   private int blockSize;
   private Block[][] blocks;
-  
+
+  // コンストラクタ
   public Board(int boardSize) {
     this.size = boardSize;
     this.blockSize = Constants.BLOCKSIZE;
 
+    // ボード上のブロックの定義
     blocks = new Block[boardSize][boardSize];
 
+    // ボードの初期配置設定
     this.initBoard();
     
     setPreferredSize(new Dimension(size * blockSize, size * blockSize));
     setFocusable(true);
   }
 
+  // プレイヤの移動にともなって石を移動させる
   protected boolean moveBlock(Point userPoint, int key) {
     Point dp = new Point();
 
@@ -66,14 +70,17 @@ public class Board extends JPanel {
     return true;
   }
 
+  // 消したブロックの個数を返却
   protected int getErasedBlocksCount() {
     return eraseBlocksCount;
   }
 
+  // コンボした回数を返却する
   protected int getErasingCount() {
     return erasingCount;
   }
-  
+
+  // ボードの初期設定
   private boolean initBoard() {
     ArrayList<Point> points = new ArrayList<Point>();
 
@@ -100,6 +107,7 @@ public class Board extends JPanel {
     return true;
   }
 
+  // 連の検出
   protected ArrayList<Point> detectLine() {
     ArrayList<Point> points = new ArrayList<Point>();
 
@@ -117,6 +125,7 @@ public class Board extends JPanel {
     return points;
   }
 
+  // ボードの描写
   public void paint(Graphics g) {
     for ( int y = 0; y < size; y++ ) {
       for ( int x = 0; x < size; x++ ) {
@@ -141,7 +150,8 @@ public class Board extends JPanel {
     
     return true;
   }
-  
+
+  // ブロックを盤面の下にずらす
   protected boolean slideBlocks(Point point) {
     int x, y;
     int dx, dy;
@@ -157,8 +167,9 @@ public class Board extends JPanel {
     
     return true;
   }
-  
- protected boolean appendBlocks(Point point) {
+
+  // 盤面の空白となった場所にブロックを追加
+  protected boolean appendBlocks(Point point) {
     int x;
     int dx, dy;
     
@@ -171,6 +182,7 @@ public class Board extends JPanel {
     return true;
   }
 
+  // ブロック同士を交換する
   private boolean swapBlocks(Point p1, Point p2) {
     Block tmp = new Block();
 
