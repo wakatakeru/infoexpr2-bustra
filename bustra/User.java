@@ -32,11 +32,11 @@ public class User {
     
     switch ( key ) {
       
-      case KeyEvent.VK_RIGHT: position.move(position.x+1, position.y); break;  // right
-      case KeyEvent.VK_LEFT:  position.move(position.x-1, position.y); break;  // left
-      case KeyEvent.VK_UP:    position.move(position.x, position.y-1); break;  // up
-      case KeyEvent.VK_DOWN:  position.move(position.x, position.y+1); break;  // down
-      default: /* do not move */ break;
+    case KeyEvent.VK_RIGHT: position.move((int)position.getX() + 1, (int)position.getY()); break;  // right
+    case KeyEvent.VK_LEFT:  position.move((int)position.getX() - 1, (int)position.getY()); break;  // left
+    case KeyEvent.VK_UP:    position.move((int)position.getX(), (int)position.getY() - 1); break;  // up
+    case KeyEvent.VK_DOWN:  position.move((int)position.getX(), (int)position.getY() + 1); break;  // down
+    default: /* do not move */ break;
       
     }
     
