@@ -24,14 +24,14 @@ public class Base extends JPanel implements KeyListener {
   private boolean toggle;
   
   public Base() {
-    setPreferredSize(new Dimension(240, 320));
-
     boardSize = 10;
+
+    setPreferredSize(new Dimension(boardSize * Constants.BLOCKSIZE, boardSize * Constants.BLOCKSIZE));
     
     // TODO: board size call by Constants Class
     // Temporary Board Size = 10
     board = new Board(boardSize);
-    player = new User();
+    player = new User(boardSize);
 
     toggle = false;
     
@@ -76,12 +76,11 @@ public class Base extends JPanel implements KeyListener {
       break;
     default:
       // movePositionにキーを渡してplayerを移動させる
-      System.out.println(player.getPosition());
       board.moveBlock(player.getPosition(), key);
       player.movePosition(key);
     }
 
-    board.repaint();
+    repaint();
   }
   
   public void keyReleased(KeyEvent e) {}
