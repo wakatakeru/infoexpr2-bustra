@@ -31,7 +31,7 @@ public class Base extends JPanel implements KeyListener {
     // TODO: board size call by Constants Class
     // Temporary Board Size = 10
     board = new Board(boardSize);
-    player = new User();
+    player = new User(boardSize);
 
     toggle = false;
     
