@@ -79,7 +79,6 @@ public class Base extends JPanel implements KeyListener {
       player.movePosition(key);
     }
 
-    System.out.println("repaint");
     repaint();
   }
   
