@@ -31,7 +31,8 @@ public class Base extends JPanel implements KeyListener {
     // TODO: board size call by Constants Class
     // Temporary Board Size = 10
     board = new Board(boardSize);
-    player = new User(boardSize);
+    // 仮実装
+    player = new User();
 
     toggle = false;
     
@@ -60,7 +61,7 @@ public class Base extends JPanel implements KeyListener {
         //==== Determination Process
         // 消す場所の左端を取ってくる
         detectedLine = board.detectLine();
-        if ( detectedLine.size() != 0 ) {
+        while ( detectedLine.size() != 0 ) {
           for ( int i = 0; i < detectedLine.size(); i++ ) {
             // 消す連の左端の一つを取得
             erasingPoint = detectedLine.get(i);
@@ -70,6 +71,8 @@ public class Base extends JPanel implements KeyListener {
             board.slideBlocks(erasingPoint);
             board.appendBlocks(erasingPoint);
           }
+
+          detectedLine = board.detectLine();          
         }
         // 得点更新する(Pending)
       }
