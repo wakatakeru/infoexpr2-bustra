@@ -79,8 +79,10 @@ public class Base extends JPanel implements KeyListener {
       break;
     default:
       // movePositionにキーを渡してplayerを移動させる
-      board.moveBlock(player.getPosition(), key);
-      player.movePosition(key);
+      if ( toggle ) {
+        board.moveBlock(player.getPosition(), key);
+        player.movePosition(key);
+      }
     }
 
     repaint();
