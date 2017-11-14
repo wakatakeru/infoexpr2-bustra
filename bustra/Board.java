@@ -37,7 +37,7 @@ public class Board extends JPanel {
   }
 
   // プレイヤの移動にともなって石を移動させる
-  protected boolean moveBlock(Point userPoint, int key) {
+  public boolean moveBlock(Point userPoint, int key) {
     Point dp = new Point();
 
     dp = userPoint;
@@ -71,12 +71,12 @@ public class Board extends JPanel {
   }
 
   // 消したブロックの個数を返却
-  protected int getErasedBlocksCount() {
+  public int getErasedBlocksCount() {
     return eraseBlocksCount;
   }
 
   // コンボした回数を返却する
-  protected int getErasingCount() {
+  public  int getErasingCount() {
     return erasingCount;
   }
 
@@ -108,7 +108,7 @@ public class Board extends JPanel {
   }
 
   // 連の検出
-  protected ArrayList<Point> detectLine() {
+  public ArrayList<Point> detectLine() {
     ArrayList<Point> points = new ArrayList<Point>();
 
     for ( int y = 0; y < size; y++ ) {
@@ -137,7 +137,7 @@ public class Board extends JPanel {
   }
 
   // 任意の点とその右隣の点をCOMBO_LINE個だけ削除するメソッド
-  protected boolean eraseBlocks(Point point) {
+  public boolean eraseBlocks(Point point) {
     int x, y;
     int dx;
 
@@ -152,7 +152,7 @@ public class Board extends JPanel {
   }
 
   // ブロックを盤面の下にずらす
-  protected boolean slideBlocks(Point point) {
+  public boolean slideBlocks(Point point) {
     int x, y;
     int dx, dy;
     
@@ -169,7 +169,7 @@ public class Board extends JPanel {
   }
 
   // 盤面の空白となった場所にブロックを追加
-  protected boolean appendBlocks(Point point) {
+  public boolean appendBlocks(Point point) {
     int x;
     int dx, dy;
     
