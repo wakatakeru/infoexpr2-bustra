@@ -190,17 +190,12 @@ public class Board extends JPanel {
   private boolean swapBlocks(Point p1, Point p2) {
     Block tmp = new Block();
 
-    System.out.println(blocks[(int)p1.getX()][(int)p1.getY()]);
-    System.out.println(blocks[(int)p2.getX()][(int)p2.getY()]);
-
-    System.out.println("---SWAP---");
+    System.out.println(p1);
+    System.out.println(p2);
     
     tmp = blocks[(int)p1.getX()][(int)p1.getY()];
     blocks[(int)p1.getX()][(int)p1.getY()] = blocks[(int)p2.getX()][(int)p2.getY()];
     blocks[(int)p2.getX()][(int)p2.getY()] = tmp;
-
-    System.out.println(blocks[(int)p1.getX()][(int)p1.getY()]);
-    System.out.println(blocks[(int)p2.getX()][(int)p2.getY()]);
     
     return true;
   }
