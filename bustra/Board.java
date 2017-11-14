@@ -45,22 +45,22 @@ public class Board extends JPanel {
     
     switch ( key ) {
     case KeyEvent.VK_LEFT:
-      if ( userPoint.getX() - 1 < 0 ) { return false; }
+      if ( (int)userPoint.getX() - 1 < 0 ) { return false; }
       dp.move((int)dp.getX() - 1, (int)dp.getY());
       swapBlocks(userPoint, dp);
       break;
     case KeyEvent.VK_RIGHT: 
-      if ( userPoint.getX() + 1 > this.size ) { return false; }
+      if ( (int)userPoint.getX() + 1 > this.size ) { return false; }
       dp.move((int)dp.getX() + 1, (int)dp.getY());
       swapBlocks(userPoint, dp);
       break;
     case KeyEvent.VK_UP:
-      if ( userPoint.getY() - 1 < 0 ) { return false; }
+      if ( (int)userPoint.getY() - 1 < 0 ) { return false; }
       dp.move((int)dp.getX(), (int)dp.getY() - 1);
       swapBlocks(userPoint, dp);
       break;
     case KeyEvent.VK_DOWN:
-      if ( userPoint.getY() + 1 > this.size ) { return false; }
+      if ( (int)userPoint.getY() + 1 > this.size ) { return false; }
       dp.move((int)dp.getX(), (int)dp.getY() + 1);
       swapBlocks(userPoint, dp);
       System.out.println("DOWN");
