@@ -31,8 +31,7 @@ public class Base extends JPanel implements KeyListener {
     // TODO: board size call by Constants Class
     // Temporary Board Size = 10
     board = new Board(boardSize);
-    // 仮実装
-    player = new User();
+    player = new User(boardSize);
 
     toggle = false;
     
@@ -55,7 +54,6 @@ public class Base extends JPanel implements KeyListener {
     // ひとまずIn Gameの実装
     switch ( key ) {
     case VK_SPACE:
-      System.out.println("SPACE");
       toggle = !toggle;
       if ( !toggle ) {
         //==== Determination Process
