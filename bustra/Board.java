@@ -40,9 +40,6 @@ public class Board extends JPanel {
   public boolean moveBlock(Point userPoint, int key) {
     Point dp = new Point((int)userPoint.getX(), (int)userPoint.getY());
 
-    System.out.println(userPoint);
-    System.out.println(dp);
-    
     switch ( key ) {
     case KeyEvent.VK_LEFT:
       if ( (int)userPoint.getX() - 1 < 0 ) { return false; }
@@ -63,7 +60,6 @@ public class Board extends JPanel {
       if ( (int)userPoint.getY() + 1 > this.size ) { return false; }
       dp.move((int)dp.getX(), (int)dp.getY() + 1);
       swapBlocks(userPoint, dp);
-      System.out.println("DOWN");
       break;
     default:
       return false;
@@ -189,9 +185,6 @@ public class Board extends JPanel {
   private boolean swapBlocks(Point p1, Point p2) {
     Block tmp = new Block();
 
-    System.out.println(p1);
-    System.out.println(p2);
-    
     tmp = blocks[(int)p1.getX()][(int)p1.getY()];
     blocks[(int)p1.getX()][(int)p1.getY()] = blocks[(int)p2.getX()][(int)p2.getY()];
     blocks[(int)p2.getX()][(int)p2.getY()] = tmp;
