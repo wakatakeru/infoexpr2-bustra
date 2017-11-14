@@ -38,10 +38,9 @@ public class Board extends JPanel {
 
   // プレイヤの移動にともなって石を移動させる
   public boolean moveBlock(Point userPoint, int key) {
-    Point dp = new Point();
+    Point dp = new Point((int)userPoint.getX(), (int)userPoint.getY());
 
-    dp = userPoint;
-
+    System.out.println(userPoint);
     System.out.println(dp);
     
     switch ( key ) {
