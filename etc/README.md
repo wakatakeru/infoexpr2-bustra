@@ -25,7 +25,9 @@
    `jar cvfm Bustra.jar META-INF/MANIFEST.MF bustra/*.class`
 
 ## 操作方法
-
+キーボード操作
+  - 矢印キー : 該当方向への移動
+  - スペースキー : 決定/ブロック掴む/ブロックを離す
 
 ## 素材元
 閉じる12 (https://sozai.cman.jp/icon/operation/close/)
