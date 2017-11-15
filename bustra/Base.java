@@ -24,7 +24,7 @@ public class Base extends JPanel implements KeyListener {
   private boolean toggle;
   
   public Base() {
-    boardSize = 10;
+    boardSize = 5;
 
     setPreferredSize(new Dimension(boardSize * Constants.CIRCLE, boardSize * Constants.CIRCLE));
     
