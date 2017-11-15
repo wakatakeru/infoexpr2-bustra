@@ -17,13 +17,13 @@
 2. Bustra.jar を作成する  
    `jar cvf Bustra.jar bustra/Base.class`
 
-3. Bustra.jar を解凍する
+3. Bustra.jar を解凍する  
    `jar xvf Bustra.jar`
 
-4. マニュフェストの編集
+4. マニュフェストの編集  
    エディタでMETA-INF/MANIFEST.MF を開き末尾に`Main-Class: bustra.Base`の一行を加える
 
-5. Bustra.jar にマニュフェストと必要ファイルを追加する
+5. Bustra.jar にマニュフェストと必要ファイルを追加する  
    `jar cvfm Bustra.jar META-INF/MANIFEST.MF bustra/*.class`
 
 ## ゲームの起動方法
