@@ -26,7 +26,7 @@ public class Base extends JPanel implements KeyListener {
   public Base() {
     boardSize = 10;
 
-    setPreferredSize(new Dimension(boardSize * Constants.BLOCKSIZE, boardSize * Constants.BLOCKSIZE));
+    setPreferredSize(new Dimension(boardSize * Constants.CIRCLE, boardSize * Constants.CIRCLE));
     
     // TODO: board size call by Constants Class
     // Temporary Board Size = 10

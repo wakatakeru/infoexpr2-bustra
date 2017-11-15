@@ -33,7 +33,7 @@ public class Board extends JPanel {
     // ボードの初期配置設定
     this.initBoard();
     
-    setPreferredSize(new Dimension(size * blockSize, size * blockSize));
+    setPreferredSize(new Dimension(size * Constants.CIRCLE, size * Constants.CIRCLE));
     setFocusable(true);
   }
 
