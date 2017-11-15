@@ -41,7 +41,19 @@ public class Base extends JPanel implements KeyListener {
 
   @Override
   public void paint(Graphics g) {
-    // 画像使うかどうか問題
+    // フォーカスの描写
+    if ( toggle ) {
+      g.setColor(Color.BLACK);
+    } else {
+      g.setColor(Color.GRAY);
+    }
+    
+    g.fillOval(
+               (int)player.getPosition().getX() * Constants.CIRCLE,
+               (int)player.getPosition().getY() * Constants.CIRCLE,
+               Constants.CIRCLE,
+               Constants.CIRCLE
+               );
     board.paint(g);
   }
 

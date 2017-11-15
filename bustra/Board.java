@@ -130,7 +130,12 @@ public class Board extends JPanel {
       for ( int x = 0; x < size; x++ ) {
         if ( blocks[x][y] == null ) { continue; }
         g.setColor(blocks[x][y].getFace());
-        g.fillOval(x * this.blockSize, y * this.blockSize, this.blockSize, this.blockSize);
+        g.fillOval(
+                   x * Constants.CIRCLE + Constants.GAP,
+                   y * Constants.CIRCLE + Constants.GAP,
+                   Constants.CIRCLE - 2 * Constants.GAP,
+                   Constants.CIRCLE - 2 * Constants.GAP
+                   );
       } 
     }
   }
