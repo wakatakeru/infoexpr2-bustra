@@ -7,6 +7,7 @@ import java.awt.Color.*;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Point;
 
 import javax.swing.SwingUtilities;
@@ -126,16 +127,18 @@ public class Board extends JPanel {
 
   // ボードの描写
   public void paint(Graphics g) {
+    Graphics2D g2 = (Graphics2D)g;
+    
     for ( int y = 0; y < size; y++ ) {
       for ( int x = 0; x < size; x++ ) {
         if ( blocks[x][y] == null ) { continue; }
-        g.setColor(blocks[x][y].getFace());
-        g.fillOval(
-                   x * Constants.CIRCLE + Constants.GAP,
-                   y * Constants.CIRCLE + Constants.GAP,
-                   Constants.CIRCLE - 2 * Constants.GAP,
-                   Constants.CIRCLE - 2 * Constants.GAP
-                   );
+        g2.drawImage(blocks[x][y].getFaceImage(),
+                     x * Constants.CIRCLE + Constants.GAP,
+                     y * Constants.CIRCLE + Constants.GAP,
+                     Constants.CIRCLE - 2 * Constants.GAP,
+                     Constants.CIRCLE - 2 * Constants.GAP,
+                     null
+                     );
       } 
     }
   }
