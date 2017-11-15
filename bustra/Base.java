@@ -70,17 +70,15 @@ public class Base extends JPanel implements KeyListener {
             board.appendBlocks(erasingPoint);
           }
 
-          detectedLine = board.detectLine();          
+          detectedLine = board.detectLine();
         }
         // 得点更新する(Pending)
       }
       break;
     default:
       // movePositionにキーを渡してplayerを移動させる
-      if ( toggle ) {
-        board.moveBlock(player.getPosition(), key);
-        player.movePosition(key);
-      }
+      if ( toggle ) { board.moveBlock(player.getPosition(), key); }
+      player.movePosition(key);
     }
 
     repaint();
