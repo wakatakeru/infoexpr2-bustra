@@ -24,6 +24,9 @@
 5. Bustra.jar にマニュフェストと必要ファイルを追加する
    `jar cvfm Bustra.jar META-INF/MANIFEST.MF bustra/*.class`
 
+## ゲームの実行方法
+Bustra.jarファイルを実行する
+
 ## 操作方法
 キーボード操作
   - 矢印キー : 該当方向への移動
