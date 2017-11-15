@@ -130,7 +130,12 @@ public class Board extends JPanel {
       for ( int x = 0; x < size; x++ ) {
         if ( blocks[x][y] == null ) { continue; }
         g.setColor(blocks[x][y].getFace());
-        g.fillOval(x * this.blockSize, y * this.blockSize, this.blockSize, this.blockSize);
+        g.fillOval(
+                   x * Constants.CIRCLE + Constants.GAP,
+                   y * Constants.CIRCLE + Constants.GAP,
+                   Constants.CIRCLE - 2 * Constants.GAP,
+                   Constants.CIRCLE - 2 * Constants.GAP
+                   );
       } 
     }
   }
@@ -183,6 +188,14 @@ public class Board extends JPanel {
 
   // ブロック同士を交換する
   private boolean swapBlocks(Point p1, Point p2) {
+    // p1についてのバリデーション
+    if ( (int)p1.getX() < 0 || (int)p1.getX() >= size ) { return false; }
+    if ( (int)p1.getY() < 0 || (int)p1.getY() >= size ) { return false; }
+
+    // p2についてのバリデーション
+    if ( (int)p2.getX() < 0 || (int)p2.getX() >= size ) { return false; }
+    if ( (int)p2.getY() < 0 || (int)p2.getY() >= size ) { return false; }
+
     Block tmp = new Block();
 
     tmp = blocks[(int)p1.getX()][(int)p1.getY()];

@@ -41,7 +41,22 @@ public class Base extends JPanel implements KeyListener {
 
   @Override
   public void paint(Graphics g) {
-    // 画像使うかどうか問題
+    // バックグラウンドの削除
+    g.clearRect(0, 0, boardSize * Constants.BLOCKSIZE, boardSize * Constants.BLOCKSIZE);
+
+    // フォーカスの描写
+    if ( toggle ) {
+      g.setColor(Color.BLACK);
+    } else {
+      g.setColor(Color.GRAY);
+    }
+    
+    g.fillOval(
+               (int)player.getPosition().getX() * Constants.CIRCLE,
+               (int)player.getPosition().getY() * Constants.CIRCLE,
+               Constants.CIRCLE,
+               Constants.CIRCLE
+               );
     board.paint(g);
   }
 
@@ -70,17 +85,15 @@ public class Base extends JPanel implements KeyListener {
             board.appendBlocks(erasingPoint);
           }
 
-          detectedLine = board.detectLine();          
+          detectedLine = board.detectLine();
         }
         // 得点更新する(Pending)
       }
       break;
     default:
       // movePositionにキーを渡してplayerを移動させる
-      if ( toggle ) {
-        board.moveBlock(player.getPosition(), key);
-        player.movePosition(key);
-      }
+      if ( toggle ) { board.moveBlock(player.getPosition(), key); }
+      player.movePosition(key);
     }
 
     repaint();

@@ -35,7 +35,7 @@ public class User {
     
     switch ( key ) {
       case KeyEvent.VK_RIGHT:
-        if ( position.x+1 > this.boardSize ) { return; }
+        if ( position.x+1 >= this.boardSize ) { return; }
         position.move(position.x+1, position.y); break;  // right
       case KeyEvent.VK_LEFT:
         if ( position.x-1 < 0 ) { return; }
@@ -44,7 +44,7 @@ public class User {
         if ( position.y-1 < 0 ) { return; }
         position.move(position.x, position.y-1); break;  // up
       case KeyEvent.VK_DOWN:
-        if ( position.y+1 > this.boardSize ) { return; }
+        if ( position.y+1 >= this.boardSize ) { return; }
         position.move(position.x, position.y+1); break;  // down
       default: /* do not move */ break;
     }
