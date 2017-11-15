@@ -3,18 +3,26 @@
 ## このプロジェクトについて
 情報環境実験２の作成課題です
 
-## Runnable JAR ファイルの作成
-
-
 ## ゲーム概要
 制限時間内でブロックを横に3つ並べて消してスコアを稼ぐパズルゲームです。
 
-## 実行方法
-1. ソースをコンパイルする  
-   `javac -encoding UTF-8 Bustra.java`
+## Runnable JAR ファイルの作成
+以下の動作はディレクトリ infoexpr2-bustra 下で行う。
 
-2. 実行する  
-   `java Bustra`
+1. ソースをコンパイルする  
+   `javac -encoding UTF-8 bustra/*.java`
+
+2. Bustra.jar を作成する  
+   `jar cvf Bustra.jar bustra/Base.class`
+
+3. Bustra.jar を解凍する
+   `jar xvf Bustra.jar`
+
+4. マニュフェストの編集
+   エディタでMETA-INF/MANIFEST.MF を開き末尾に`Main-Class: bustra.Base`の一行を加える
+
+5. Bustra.jar にマニュフェストと必要ファイルを追加する
+   `jar cvfm Bustra.jar META-INF/MANIFEST.MF bustra/*.class`
 
 ## 操作方法
 
