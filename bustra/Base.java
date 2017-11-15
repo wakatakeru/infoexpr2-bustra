@@ -41,6 +41,9 @@ public class Base extends JPanel implements KeyListener {
 
   @Override
   public void paint(Graphics g) {
+    // バックグラウンドの削除
+    g.clearRect(0, 0, boardSize * Constants.BLOCKSIZE, boardSize * Constants.BLOCKSIZE);
+
     // フォーカスの描写
     if ( toggle ) {
       g.setColor(Color.BLACK);
