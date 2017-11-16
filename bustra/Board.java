@@ -37,6 +37,31 @@ public class Board extends JPanel {
     setFocusable(true);
   }
 
+  public boolean eraseDetectedLines() {
+    Point erasingPoint = new Point();
+    ArrayList<Point> detectedLine = new ArrayList<Point>();
+
+    // 3連を検出
+    detectedLine = this.detectLine();
+
+    // 3連がなくなるまで削除を続ける
+    while ( detectedLine.size() != 0 ) {
+      for ( int i = 0; i < detectedLine.size(); i++ ) {
+        // 消す連の左端の一つを取得                                                                                                                                                                                                   
+        erasingPoint = detectedLine.get(i);
+
+        // ボードの更新処理                                                                                                                                                                                                           
+        this.eraseBlocks(erasingPoint);
+        this.slideBlocks(erasingPoint);
+        this.appendBlocks(erasingPoint);
+      }
+
+      detectedLine = this.detectLine();                                                                                                                                                                                              
+    }
+
+    return true;
+  }
+  
   // プレイヤの移動にともなって石を移動させる
   public boolean moveBlock(Point userPoint, int key) {
     Point dp = new Point((int)userPoint.getX(), (int)userPoint.getY());
@@ -108,7 +133,7 @@ public class Board extends JPanel {
   }
 
   // 連の検出
-  public ArrayList<Point> detectLine() {
+  private ArrayList<Point> detectLine() {
     ArrayList<Point> points = new ArrayList<Point>();
 
     for ( int y = 0; y < size; y++ ) {
@@ -144,7 +169,7 @@ public class Board extends JPanel {
   }
 
   // 任意の点とその右隣の点をCOMBO_LINE個だけ削除するメソッド
-  public boolean eraseBlocks(Point point) {
+  private boolean eraseBlocks(Point point) {
     int x, y;
     int dx;
 
@@ -159,7 +184,7 @@ public class Board extends JPanel {
   }
 
   // ブロックを盤面の下にずらす
-  public boolean slideBlocks(Point point) {
+  private boolean slideBlocks(Point point) {
     int x, y;
     int dx, dy;
     
@@ -176,7 +201,7 @@ public class Board extends JPanel {
   }
 
   // 盤面の空白となった場所にブロックを追加
-  public boolean appendBlocks(Point point) {
+  private boolean appendBlocks(Point point) {
     int x;
     int dx, dy;
     
