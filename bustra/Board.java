@@ -41,9 +41,13 @@ public class Board extends JPanel {
     Point erasingPoint = new Point();
     ArrayList<Point> detectedLine = new ArrayList<Point>();
 
+    // 連の検出数とブロックの個数を初期化
+    eraseBlocksCount = 0;
+    erasingCount = 0;
+    
     // 3連を検出
     detectedLine = this.detectLine();
-
+    
     // 3連がなくなるまで削除を続ける
     while ( detectedLine.size() != 0 ) {
       for ( int i = 0; i < detectedLine.size(); i++ ) {
@@ -144,8 +148,8 @@ public class Board extends JPanel {
       }
     }
 
-    eraseBlocksCount = points.size() * Constants.COMBO_LINE;
-    erasingCount = points.size();
+    eraseBlocksCount += points.size() * Constants.COMBO_LINE;
+    erasingCount += points.size();
     
     return points;
   }
