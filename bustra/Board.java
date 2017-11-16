@@ -7,6 +7,7 @@ import java.awt.Color.*;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Point;
 
 import javax.swing.SwingUtilities;
@@ -32,10 +33,39 @@ public class Board extends JPanel {
     // ボードの初期配置設定
     this.initBoard();
     
-    setPreferredSize(new Dimension(size * blockSize, size * blockSize));
+    setPreferredSize(new Dimension(size * Constants.CIRCLE, size * Constants.CIRCLE));
     setFocusable(true);
   }
 
+  public boolean eraseDetectedLines() {
+    Point erasingPoint = new Point();
+    ArrayList<Point> detectedLine = new ArrayList<Point>();
+
+    // 連の検出数とブロックの個数を初期化
+    eraseBlocksCount = 0;
+    erasingCount = 0;
+    
+    // 3連を検出
+    detectedLine = this.detectLine();
+    
+    // 3連がなくなるまで削除を続ける
+    while ( detectedLine.size() != 0 ) {
+      for ( int i = 0; i < detectedLine.size(); i++ ) {
+        // 消す連の左端の一つを取得                                                                                                                                                                                                   
+        erasingPoint = detectedLine.get(i);
+
+        // ボードの更新処理                                                                                                                                                                                                           
+        this.eraseBlocks(erasingPoint);
+        this.slideBlocks(erasingPoint);
+        this.appendBlocks(erasingPoint);
+      }
+
+      detectedLine = this.detectLine();                                                                                                                                                                                              
+    }
+
+    return true;
+  }
+  
   // プレイヤの移動にともなって石を移動させる
   public boolean moveBlock(Point userPoint, int key) {
     Point dp = new Point((int)userPoint.getX(), (int)userPoint.getY());
@@ -107,7 +137,7 @@ public class Board extends JPanel {
   }
 
   // 連の検出
-  public ArrayList<Point> detectLine() {
+  private ArrayList<Point> detectLine() {
     ArrayList<Point> points = new ArrayList<Point>();
 
     for ( int y = 0; y < size; y++ ) {
@@ -118,30 +148,32 @@ public class Board extends JPanel {
       }
     }
 
-    eraseBlocksCount = points.size() * Constants.COMBO_LINE;
-    erasingCount = points.size();
+    eraseBlocksCount += points.size() * Constants.COMBO_LINE;
+    erasingCount += points.size();
     
     return points;
   }
 
   // ボードの描写
   public void paint(Graphics g) {
+    Graphics2D g2 = (Graphics2D)g;
+    
     for ( int y = 0; y < size; y++ ) {
       for ( int x = 0; x < size; x++ ) {
         if ( blocks[x][y] == null ) { continue; }
-        g.setColor(blocks[x][y].getFace());
-        g.fillOval(
-                   x * Constants.CIRCLE + Constants.GAP,
-                   y * Constants.CIRCLE + Constants.GAP,
-                   Constants.CIRCLE - 2 * Constants.GAP,
-                   Constants.CIRCLE - 2 * Constants.GAP
-                   );
+        g2.drawImage(blocks[x][y].getFaceImage(),
+                     x * Constants.CIRCLE + Constants.GAP,
+                     y * Constants.CIRCLE + Constants.GAP,
+                     Constants.CIRCLE - 2 * Constants.GAP,
+                     Constants.CIRCLE - 2 * Constants.GAP,
+                     null
+                     );
       } 
     }
   }
 
   // 任意の点とその右隣の点をCOMBO_LINE個だけ削除するメソッド
-  public boolean eraseBlocks(Point point) {
+  private boolean eraseBlocks(Point point) {
     int x, y;
     int dx;
 
@@ -156,7 +188,7 @@ public class Board extends JPanel {
   }
 
   // ブロックを盤面の下にずらす
-  public boolean slideBlocks(Point point) {
+  private boolean slideBlocks(Point point) {
     int x, y;
     int dx, dy;
     
@@ -173,7 +205,7 @@ public class Board extends JPanel {
   }
 
   // 盤面の空白となった場所にブロックを追加
-  public boolean appendBlocks(Point point) {
+  private boolean appendBlocks(Point point) {
     int x;
     int dx, dy;
     

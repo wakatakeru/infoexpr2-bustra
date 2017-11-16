@@ -24,9 +24,9 @@ public class Base extends JPanel implements KeyListener {
   private boolean toggle;
   
   public Base() {
-    boardSize = 10;
+    boardSize = 5;
 
-    setPreferredSize(new Dimension(boardSize * Constants.BLOCKSIZE, boardSize * Constants.BLOCKSIZE));
+    setPreferredSize(new Dimension(boardSize * Constants.CIRCLE, boardSize * Constants.CIRCLE));
     
     // TODO: board size call by Constants Class
     // Temporary Board Size = 10
@@ -62,8 +62,6 @@ public class Base extends JPanel implements KeyListener {
 
   public void keyPressed(KeyEvent e) {
     int key = e.getKeyCode();
-    Point erasingPoint = new Point();
-    ArrayList<Point> detectedLine = new ArrayList<Point>();
     
     // In GameかIn Menuかで処理変わりそう
     // ひとまずIn Gameの実装
@@ -71,23 +69,12 @@ public class Base extends JPanel implements KeyListener {
     case VK_SPACE:
       toggle = !toggle;
       if ( !toggle ) {
-        //==== Determination Process
-        // 消す場所の左端を取ってくる
-        detectedLine = board.detectLine();
-        while ( detectedLine.size() != 0 ) {
-          for ( int i = 0; i < detectedLine.size(); i++ ) {
-            // 消す連の左端の一つを取得
-            erasingPoint = detectedLine.get(i);
-
-            // ボードの更新処理
-            board.eraseBlocks(erasingPoint);
-            board.slideBlocks(erasingPoint);
-            board.appendBlocks(erasingPoint);
-          }
-
-          detectedLine = board.detectLine();
-        }
+        board.eraseDetectedLines();
         // 得点更新する(Pending)
+        player.addScore(board.getErasingCount(), board.getErasedBlocksCount());
+
+        // 得点のコンソール表示
+        System.out.println(player.getScore());
       }
       break;
     default:

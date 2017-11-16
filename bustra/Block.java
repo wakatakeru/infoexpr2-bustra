@@ -1,14 +1,21 @@
 package bustra;
 
+import java.awt.image.BufferedImage;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import javax.imageio.ImageIO;
+
+import java.io.*;
+
 public class Block {
   private Color face;
-
+  private BufferedImage faceImage;
+  
   // コンストラクタ
   public Block() {
     this.face = getRandomColor();
+    setFaceImage(this.face);
   }
 
   // ブロックの色を返却するメソッド
@@ -21,8 +28,12 @@ public class Block {
     if ( face != block.getFace() ) { return false; }
     return true;
   }
+
+  protected BufferedImage getFaceImage() {
+    return faceImage;
+  }
   
-  // ランダムな色を生成するメソッド
+  // ランダムな色を生成
   private static Color getRandomColor() {
     double rand;
     int sw;
@@ -46,5 +57,15 @@ public class Block {
     }
 
     return color;
+  }
+  
+  // 色に応じて画像を設定
+  private void setFaceImage(Color faceColor) {
+    try{
+      if ( faceColor == Color.RED    ) { faceImage = ImageIO.read(new File("bin//red_block.png")); }
+      if ( faceColor == Color.BLUE   ) { faceImage = ImageIO.read(new File("bin//blue_block.png")); }
+      if ( faceColor == Color.YELLOW ) { faceImage = ImageIO.read(new File("bin//yellow_block.png")); }
+      if ( faceColor == Color.GREEN  ) { faceImage = ImageIO.read(new File("bin//green_block.png")); }
+    } catch( IOException e ) { }
   }
 }
