@@ -71,8 +71,10 @@ public class Base extends JPanel implements KeyListener {
       if ( !toggle ) {
         board.eraseDetectedLines();
         // 得点更新する(Pending)
-        System.out.println(board.getErasingCount());
-        System.out.println(board.getErasedBlocksCount());
+        player.addScore(board.getErasingCount(), board.getErasedBlocksCount());
+
+        // 得点のコンソール表示
+        System.out.println(player.getScore());
       }
       break;
     default:

@@ -16,18 +16,18 @@ public class Score {
     // pointを返却する
     protected int getPoint() {
 
-	return point;
+      return point;
 
     }
 
     // 実際の得点の計算
-    protected int calcPoint(int erasedBlockCount, int erasingCount) {
+    protected boolean calcPoint(int erasedBlockCount, int erasingCount) {
 
-	// pointは100点刻みで、
-	// コンボ数(消えたブロックの個数×消した回数)の半分
+      // pointは100点刻みで、
+      // コンボ数(消えたブロックの個数×消した回数)の半分
 
-	point = erasedBlockCount * erasingCount / 2 * 100;
-	return point;
+      point += erasedBlockCount * erasingCount / 2 * 100;
+      return true;
 
     }
 

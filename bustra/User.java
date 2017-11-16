@@ -53,16 +53,16 @@ public class User {
 
   // scoreをセットし返却
   public int getScore() {
-    
-    setScore();
+
+    score = userScore.getPoint();
     return score;
     
   }
 
   // スコアにpointを加算
-  private boolean setScore() {
+  public boolean addScore(int erasedBlockCount, int erasingCount) {
     
-    score = userScore.getPoint();
+    userScore.calcPoint(erasedBlockCount, erasingCount);
     return true;
     
   }
