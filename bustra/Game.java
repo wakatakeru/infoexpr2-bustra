@@ -23,8 +23,8 @@ public class Game extends JPanel implements KeyListener, Runnable {
   private int boardSize;
   private boolean toggle;
   
-  public Game(int size, String name) {
-    boardSize = size;
+  public Game(String name) {
+    boardSize = 6;
 
     setPreferredSize(new Dimension(boardSize * Constants.CIRCLE, boardSize * Constants.CIRCLE));
     
