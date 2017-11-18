@@ -62,7 +62,7 @@ public class Game extends JPanel implements KeyListener, Runnable {
     board.paint(g);
   }
   
-  public int getUserScore() {
+  public int getScore() {
     return player.getScore();
   }
 
@@ -101,7 +101,7 @@ public class Game extends JPanel implements KeyListener, Runnable {
     SwingUtilities.invokeLater(() -> {
       JFrame frame = new JFrame("Bustra!");       
 
-      frame.add(new Game("test"));
+      frame.add(new Game(userName));
       frame.pack();
       frame.setVisible(true);
 
