@@ -72,7 +72,7 @@ public class EndMenu extends Menu implements Runnable {
     SwingUtilities.invokeLater(() -> {
       JFrame frame = new JFrame("EndMenu");
       
-      frame.add(new EndMenu());
+      frame.add(new EndMenu(userScore, userName));
       frame.pack();
       frame.setVisible(true);
 
