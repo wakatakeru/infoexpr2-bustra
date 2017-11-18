@@ -44,6 +44,7 @@ public class Menu extends JPanel {
     return sp;
   }
 
+  @Override
   public void run() {
     
     SwingUtilities.invokeLater(() -> {

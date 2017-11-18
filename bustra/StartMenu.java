@@ -21,11 +21,9 @@ import javax.swing.SwingUtilities;
 public class StartMenu extends Menu implements Runnable {
   
   private String userName;
-  private static int boardSize;
   private int width, hight;
-  private JLabel labelTitle, labelName, labelSize;
+  private JLabel labelTitle, labelName;
   private JTextField fieldName;
-  private JTextField fieldSize;
   private JButton startButton;
   
   public StartMenu() {
@@ -44,31 +42,21 @@ public class StartMenu extends Menu implements Runnable {
     return this.userName;
   
   }
-
-  // boardSize 返却
-  public int getBoardSize() {
-    
-    return this.boardSize;
-  
-  }
   
   @Override
   public boolean disp() {
     
     // action
     fieldName = new JTextField("", 10);
-    fieldSize = new JTextField("", 10);
     startButton = new JButton("ゲームスタート");
     startButton.addActionListener(new ActionListener(){
       public void actionPerformed(ActionEvent e){
         userName = fieldName.getText();
-        boardSize = Integer.parseInt(fieldSize.getText());
       }
     });
     labelTitle = new JLabel("Bustra!");
     labelTitle.setFont(new Font("Arial", Font.PLAIN, 24));
     labelName = new JLabel("Your Name");
-    labelSize = new JLabel("Board Size");
     
     // add and layout
     setLayout(new FlowLayout());
@@ -76,9 +64,6 @@ public class StartMenu extends Menu implements Runnable {
     this.add(getLine(width, 0));
     this.add(labelName);
     this.add(fieldName);
-    this.add(getLine(width, 0));
-    this.add(labelSize);
-    this.add(fieldSize);
     this.add(getLine(width, 0));
     this.add(getLine(width - 18, 1));
     this.add(startButton);
@@ -88,6 +73,7 @@ public class StartMenu extends Menu implements Runnable {
     
   }
   
+  @Override
   public void run() {
     
     SwingUtilities.invokeLater(() -> {

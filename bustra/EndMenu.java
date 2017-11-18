@@ -59,6 +59,7 @@ public class EndMenu extends Menu implements Runnable {
     
   }
   
+  @Override
   public void run() {
     
     SwingUtilities.invokeLater(() -> {
