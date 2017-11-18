@@ -24,7 +24,7 @@ public class Game extends JPanel implements KeyListener, Runnable {
   private boolean toggle;
   
   public Game(String name) {
-    boardSize = 6;
+    boardSize = BOARD_SIZE;
 
     setPreferredSize(new Dimension(boardSize * Constants.CIRCLE, boardSize * Constants.CIRCLE));
     
@@ -58,6 +58,10 @@ public class Game extends JPanel implements KeyListener, Runnable {
                Constants.CIRCLE
                );
     board.paint(g);
+  }
+  
+  public int getUserScore() {
+    return player.getScore();
   }
 
   public void keyPressed(KeyEvent e) {
@@ -95,7 +99,7 @@ public class Game extends JPanel implements KeyListener, Runnable {
     SwingUtilities.invokeLater(() -> {
       JFrame frame = new JFrame("Bustra!");       
 
-      frame.add(new Game(6, "test"));
+      frame.add(new Game("test"));
       frame.pack();
       frame.setVisible(true);
 
