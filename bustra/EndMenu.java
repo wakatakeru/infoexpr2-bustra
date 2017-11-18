@@ -24,23 +24,17 @@ public class EndMenu extends Menu implements Runnable {
   private int width, hight;
   private JLabel labelEnd, labelScore;
   
-  public EndMenu() {
+  public EndMenu(int score) {
     
     width = 300;
     hight = 200;
-    this.setUserScore();
+    userScore = score;
     setPreferredSize(new Dimension(width, hight));
     setFocusable(true);
     this.disp();
     
   }
   
-  public void setUserScore() {
-    
-    // 然るべき場所からuserScoreをとってくる(仮実装)
-    userScore = 0;
-    
-  }
   
   @Override
   public boolean disp() {
