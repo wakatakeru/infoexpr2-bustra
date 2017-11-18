@@ -20,7 +20,7 @@ import javax.swing.SwingUtilities;
 
 public class StartMenu extends Menu implements Runnable {
   
-  private String userName;
+  private static String userName;
   private int width, hight;
   private JLabel labelTitle, labelName;
   private JTextField fieldName;
@@ -37,9 +37,9 @@ public class StartMenu extends Menu implements Runnable {
   }
   
   // userName 返却
-  public String getUserName() {
+  public static String getUserName() {
     
-    return this.userName;
+    return userName;
   
   }
   

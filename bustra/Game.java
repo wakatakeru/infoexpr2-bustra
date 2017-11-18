@@ -62,7 +62,7 @@ public class Game extends JPanel implements KeyListener, Runnable {
     board.paint(g);
   }
   
-  public int getScore() {
+  public static int getScore() {
     return player.getScore();
   }
 
