@@ -15,16 +15,16 @@
    `javac -encoding UTF-8 bustra/*.java`
 
 2. Bustra.jar を作成する  
-   `jar cvf Bustra.jar bustra/Base.class`
+   `jar cvf Bustra.jar bustra/Main.class`
 
 3. Bustra.jar を解凍する  
    `jar xvf Bustra.jar`
 
 4. マニュフェストの編集  
-   エディタでMETA-INF/MANIFEST.MF を開き末尾に`Main-Class: bustra.Base`の一行を加える
+   エディタでMETA-INF/MANIFEST.MF を開き末尾に`Main-Class: bustra.Main`の一行を加える
 
 5. Bustra.jar にマニュフェストと必要ファイルを追加する  
-   `jar cvfm Bustra.jar META-INF/MANIFEST.MF bustra/*.class`
+   `jar cvfm Bustra.jar META-INF/MANIFEST.MF bustra/*.class bin/*`
 
 ## ゲームの起動方法
 
@@ -33,10 +33,10 @@
 
   - コマンドライン上での移動  
     ディレクトリ infoexpr2-bustra 下で以下のコマンドを実行する
-    `java bustra.Base`
+    `java bustra.Main`
 
-## 操作方法
-キーボード操作
+## 操作方法  
+キーボード操作  
   - 矢印キー : 該当方向への移動
   - スペースキー : 決定/ブロック掴む/ブロックを離す
 
