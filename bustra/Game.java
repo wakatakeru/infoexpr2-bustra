@@ -68,9 +68,7 @@ public class Game extends JPanel implements KeyListener, Runnable {
 
   public void keyPressed(KeyEvent e) {
     int key = e.getKeyCode();
-    
-    // In GameかIn Menuかで処理変わりそう
-    // ひとまずIn Gameの実装
+
     switch ( key ) {
     case VK_SPACE:
       toggle = !toggle;
@@ -88,7 +86,7 @@ public class Game extends JPanel implements KeyListener, Runnable {
       if ( toggle ) { board.moveBlock(player.getPosition(), key); }
       player.movePosition(key);
     }
-
+    
     repaint();
   }
   
@@ -98,14 +96,17 @@ public class Game extends JPanel implements KeyListener, Runnable {
   
   @Override
   public void run() {
-    SwingUtilities.invokeLater(() -> {
-      JFrame frame = new JFrame("Bustra!");       
+    JFrame frame = new JFrame("Bustra!");       
 
-      frame.add(new Game(userName));
-      frame.pack();
-      frame.setVisible(true);
+    try {
+      Thread.sleep(1000);
+      SwingUtilities.invokeLater(() -> {
+          frame.add(new Game(userName));
+          frame.pack();
+          frame.setVisible(true);
 
-      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    });
+          frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        });
+    } catch (InterruptedException e) { }
   }
 }

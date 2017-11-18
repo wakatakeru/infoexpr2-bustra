@@ -20,6 +20,7 @@ public class Main {
     startMenu.start();
 
     try {
+      Thread.sleep(2000);
       startMenu.join();
     } catch (InterruptedException e) { /* do nothing */ }
 
@@ -27,11 +28,10 @@ public class Main {
     game = new Thread(new Game(userName));
 
     game.start();
-    timer.start();
     
     try {
-      game.join();
-      timer.join();
+      Thread.sleep(Constants.LIMIT_TIME);
+      game.interrupt();
     } catch (InterruptedException e) { /* do nothing */ }
 
     /* Pending
