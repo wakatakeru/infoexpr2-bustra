@@ -18,7 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JSeparator;
 import javax.swing.SwingUtilities;
 
-public class Menu extends JPanel {
+public class Menu extends JPanel implements Runnable {
   
   private int width = 300;
   private int hight = 200;
