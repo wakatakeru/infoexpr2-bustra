@@ -64,7 +64,7 @@ public class EndMenu extends JFrame implements Runnable {
         client.postData();
         desktop = Desktop.getDesktop();
         try{
-          uri = new URI( Constants.URL );
+          uri = new URI( Constants.ROOT_URL );
           desktop.browse( uri );
         } catch( Exception ie ) {
           ie.printStackTrace();
