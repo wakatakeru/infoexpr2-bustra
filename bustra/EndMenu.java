@@ -32,7 +32,6 @@ public class EndMenu extends Menu implements Runnable {
     width = 300;
     hight = 200;
     userScore = score;
-    userName = name;
     setPreferredSize(new Dimension(width, hight));
     setFocusable(true);
     this.disp();
@@ -72,7 +71,7 @@ public class EndMenu extends Menu implements Runnable {
     SwingUtilities.invokeLater(() -> {
       JFrame frame = new JFrame("EndMenu");
       
-      frame.add(new EndMenu(userScore, userName));
+      frame.add(new EndMenu(userScore));
       frame.pack();
       frame.setVisible(true);
 
