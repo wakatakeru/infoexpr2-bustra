@@ -16,7 +16,7 @@ import java.awt.event.KeyListener;
 
 import static java.awt.event.KeyEvent.*;
 
-public class Game extends JPanel implements KeyListener {
+public class Game extends JPanel implements KeyListener, Runnable {
   private Board board;
   private static User player;
 
@@ -90,7 +90,8 @@ public class Game extends JPanel implements KeyListener {
 
   public void keyTyped(KeyEvent e) {}
   
-  public static void main(String args[]) {
+  @Override
+  public void run() {
     SwingUtilities.invokeLater(() -> {
       JFrame frame = new JFrame("Bustra!");       
 
