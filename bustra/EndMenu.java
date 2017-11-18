@@ -9,6 +9,9 @@ import java.awt.FlowLayout;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Desktop;
+
+import java.net.URI;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -29,6 +32,8 @@ public class EndMenu extends JFrame implements Runnable {
   private static JPanel p;
   private Container contentPane;
   private Client client;
+  Desktop desktop;
+  URI uri;
   
   public EndMenu(int score) {
     
@@ -57,6 +62,13 @@ public class EndMenu extends JFrame implements Runnable {
         userName = fieldName.getText();
         client = new Client(userName, userScore);
         client.postData();
+        desktop = Desktop.getDesktop();
+        try{
+          uri = new URI( Constants.URL );
+          desktop.browse( uri );
+        } catch( Exception ie ) {
+          ie.printStackTrace();
+        }
         System.exit(0);
       }
     });
@@ -83,7 +95,7 @@ public class EndMenu extends JFrame implements Runnable {
   @Override
   public void run() {
     
-    EndMenu frame = new EndMenu(1);
+    EndMenu frame = new EndMenu(userScore);
     frame.setVisible(true);
   
   }
