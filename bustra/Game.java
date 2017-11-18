@@ -16,15 +16,17 @@ import java.awt.event.KeyListener;
 
 import static java.awt.event.KeyEvent.*;
 
-public class Base extends JPanel implements KeyListener {
+public class Game extends JPanel implements KeyListener, Runnable {
   private Board board;
-  private User player;
+  private static User player;
 
   private int boardSize;
+  private String userName;
   private boolean toggle;
   
-  public Base() {
-    boardSize = 5;
+  public Game(String name) {
+    boardSize = Constants.BOARD_SIZE;
+    userName = name;
 
     setPreferredSize(new Dimension(boardSize * Constants.CIRCLE, boardSize * Constants.CIRCLE));
     
@@ -59,6 +61,10 @@ public class Base extends JPanel implements KeyListener {
                );
     board.paint(g);
   }
+  
+  public int getScore() {
+    return player.getScore();
+  }
 
   public void keyPressed(KeyEvent e) {
     int key = e.getKeyCode();
@@ -90,11 +96,12 @@ public class Base extends JPanel implements KeyListener {
 
   public void keyTyped(KeyEvent e) {}
   
-  public static void main(String args[]) {
+  @Override
+  public void run() {
     SwingUtilities.invokeLater(() -> {
       JFrame frame = new JFrame("Bustra!");       
 
-      frame.add(new Base());
+      frame.add(new Game(userName));
       frame.pack();
       frame.setVisible(true);
 
