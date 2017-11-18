@@ -24,8 +24,7 @@ public class Main {
       startMenu.join();
     } catch (InterruptedException e) { /* do nothing */ }
 
-    userName = StartMenu.getUserName();
-    game = new Thread(new Game(userName));
+    game = new Thread(new Game());
 
     game.start();
     
@@ -38,7 +37,7 @@ public class Main {
        endMenu = new Thread(new Menu(Game.getScore()));
     */
     
-    endMenu = new Thread(new EndMenu(Game.getScore(), userName));
+    endMenu = new Thread(new EndMenu(Game.getScore()));
 
     endMenu.start();
 
