@@ -18,7 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JSeparator;
 import javax.swing.SwingUtilities;
 
-public class EndMenu extends JFrame {
+public class EndMenu extends JFrame implements Runnable {
   
   private String userName;
   private int userScore;
@@ -80,7 +80,8 @@ public class EndMenu extends JFrame {
     return sp;
   }
   
-  public static void main(String args[]) {
+  @Override
+  public void run() {
     
     EndMenu frame = new EndMenu(1);
     frame.setVisible(true);
