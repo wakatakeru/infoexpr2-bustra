@@ -56,7 +56,13 @@ public class Board extends JPanel {
 
         // ボードの更新処理                                                                                                                                                                                                           
         this.eraseBlocks(erasingPoint);
+	try {
+	    Thread.sleep(300);             // 500ミリ秒スリープ
+	} catch(InterruptedException e) { /* do nothing */ }
         this.slideBlocks(erasingPoint);
+	try {
+	    Thread.sleep(300);
+	} catch (InterruptedException e) { /* do nothing */}
         this.appendBlocks(erasingPoint);
       }
 
