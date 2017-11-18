@@ -99,7 +99,7 @@ public class Game extends JPanel implements KeyListener, Runnable {
     try {
       Thread.sleep(1000);
       SwingUtilities.invokeLater(() -> {
-          frame.add(new Game(userName));
+          frame.add(new Game());
           frame.pack();
           frame.setVisible(true);
 
