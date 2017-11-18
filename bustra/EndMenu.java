@@ -27,7 +27,7 @@ public class EndMenu extends Menu implements Runnable {
   private JButton sendButton;
   private Client client;
   
-  public EndMenu(int score, String name) {
+  public EndMenu(int score) {
     
     width = 300;
     hight = 200;
