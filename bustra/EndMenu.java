@@ -18,7 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JSeparator;
 import javax.swing.SwingUtilities;
 
-public class EndMenu extends Menu implements Runnable {
+public class EndMenu extends JFrame implements Runnable {
   
   private String userName;
   private int userScore;
@@ -26,24 +26,26 @@ public class EndMenu extends Menu implements Runnable {
   private JLabel labelEnd, labelScore, labelName;
   private JTextField fieldName;
   private JButton sendButton;
+  private static JPanel p;
+  private Container contentPane;
   private Client client;
   
   public EndMenu(int score) {
     
+    p = new JPanel();
+    contentPane = getContentPane();  
     width = 300;
-    hight = 200;
+    height = 100;
     userScore = score;
-    setPreferredSize(new Dimension(width, hight));
-    setFocusable(true);
-    this.disp();
     
-  }
-  
-  
-  @Override
-  public boolean disp() {
+    setTitle("EndMenu");
+    setSize(width, height);
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    setLayout(new FlowLayout());
     
-    // action
+    p.setPreferredSize(new Dimension(width, height));
+    p.setFocusable(true);
+    
     labelEnd = new JLabel("Game End!");
     labelEnd.setFont(new Font("Arial", Font.PLAIN, 24));
     labelScore = new JLabel("Your score is " + String.valueOf(userScore));
@@ -58,7 +60,6 @@ public class EndMenu extends Menu implements Runnable {
       }
     });
     
-    // add and layout
     this.add(labelEnd);
     this.add(getLine(width, 0));
     this.add(labelScore);
@@ -68,37 +69,29 @@ public class EndMenu extends Menu implements Runnable {
     this.add(getLine(width, 0));
     this.add(sendButton);
     
-    return true;
+    contentPane.add(p);
     
+  }
+  
+  public static JSeparator getLine(int wid, int hig) {
+    JSeparator sp = new JSeparator(JSeparator.HORIZONTAL);
+    sp.setPreferredSize(new Dimension(wid, hig));
+    return sp;
   }
   
   @Override
   public void run() {
     
-    SwingUtilities.invokeLater(() -> {
-      JFrame frame = new JFrame("EndMenu");
-      
-      frame.add(new EndMenu(userScore));
-      frame.pack();
-      frame.setVisible(true);
-
-      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    });
+    StartMenu frame = new StartMenu();
+    frame.setVisible(true);
     
   }
   
-  /* デバック用
   public static void main(String args[]) {
-    SwingUtilities.invokeLater(() -> {
-      JFrame frame = new JFrame("EndMenu");
-      
-      frame.add(new EndMenu(2));
-      frame.pack();
-      frame.setVisible(true);
-
-      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    });
+    
+    EndMenu frame = new EndMenu();
+    frame.setVisible(true);
+  
   }
-  */
   
 }
