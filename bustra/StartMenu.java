@@ -62,7 +62,7 @@ public class StartMenu extends JFrame implements Runnable {
     StartMenu frame = new StartMenu();
     
     try {
-      Thread.sleep(2000);
+      Thread.sleep(100);
       frame.setVisible(true);
     } catch (InterruptedException e) {}
   }
