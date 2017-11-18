@@ -23,7 +23,8 @@ public class EndMenu extends Menu implements Runnable {
   private String userName;
   private int userScore;
   private int width, hight;
-  private JLabel labelEnd, labelScore;
+  private JLabel labelEnd, labelScore, labelName;
+  private JTextField fieldName;
   private JButton sendButton;
   private Client client;
   
@@ -46,9 +47,12 @@ public class EndMenu extends Menu implements Runnable {
     labelEnd = new JLabel("Game End!");
     labelEnd.setFont(new Font("Arial", Font.PLAIN, 24));
     labelScore = new JLabel("Your score is " + String.valueOf(userScore));
+    fieldName = new JTextField("", 8);
+    labelName = new JLabel("Your Name :");
     sendButton = new JButton("Send your score");
     sendButton.addActionListener(new ActionListener(){
       public void actionPerformed(ActionEvent e){
+        userName = fieldName.getText();
         client = new Client(userName, userScore);
         client.postData();
       }
@@ -59,6 +63,9 @@ public class EndMenu extends Menu implements Runnable {
     this.add(getLine(width, 0));
     this.add(labelScore);
     this.add(getLine(width - 18, 1));
+    this.add(labelName);
+    this.add(fieldName);
+    this.add(getLine(width, 0));
     this.add(sendButton);
     
     return true;
@@ -85,7 +92,7 @@ public class EndMenu extends Menu implements Runnable {
     SwingUtilities.invokeLater(() -> {
       JFrame frame = new JFrame("EndMenu");
       
-      frame.add(new EndMenu());
+      frame.add(new EndMenu(2));
       frame.pack();
       frame.setVisible(true);
 
