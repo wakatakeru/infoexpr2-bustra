@@ -11,7 +11,7 @@ public class Main {
       Thread startMenu = new Thread(new StartMenu());
     */
     
-    Thread startMenu = new Thread(new Menu());
+    Thread startMenu = new Thread(new StartMenu());
     Thread endMenu;
     Thread game;
     Thread timer = new Thread(new Timer());
@@ -36,7 +36,7 @@ public class Main {
        endMenu = new Thread(new Menu(Game.getScore()));
     */
     
-    endMenu = new Thread(new Menu(Game.getScore()));
+    endMenu = new Thread(new EndMenu(Game.getScore()));
 
     endMenu.start();
 
