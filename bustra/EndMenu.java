@@ -18,7 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JSeparator;
 import javax.swing.SwingUtilities;
 
-public class EndMenu extends JFrame implements Runnable {
+public class EndMenu extends JFrame {
   
   private String userName;
   private int userScore;
@@ -77,14 +77,6 @@ public class EndMenu extends JFrame implements Runnable {
     JSeparator sp = new JSeparator(JSeparator.HORIZONTAL);
     sp.setPreferredSize(new Dimension(wid, hig));
     return sp;
-  }
-  
-  @Override
-  public void run() {
-    
-    EndMenu frame = new EndMenu(1);
-    frame.setVisible(true);
-    
   }
   
   public static void main(String args[]) {
