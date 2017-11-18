@@ -49,7 +49,7 @@ public class EndMenu extends Menu implements Runnable {
     sendButton = new JButton("Send your score");
     sendButton.addActionListener(new ActionListener(){
       public void actionPerformed(ActionEvent e){
-        Client(userName, userScore).postData;
+        Client(userName, userScore).postData();
       }
     });
     
