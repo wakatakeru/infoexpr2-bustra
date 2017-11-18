@@ -83,7 +83,7 @@ public class EndMenu extends JFrame implements Runnable {
   @Override
   public void run() {
     
-    EndMenu frame = new EndMenu(1);
+    EndMenu frame = new EndMenu(userScore);
     frame.setVisible(true);
   
   }
