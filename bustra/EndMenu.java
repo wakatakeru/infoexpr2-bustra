@@ -25,6 +25,7 @@ public class EndMenu extends Menu implements Runnable {
   private int width, hight;
   private JLabel labelEnd, labelScore;
   private JButton sendButton;
+  private Client client;
   
   public EndMenu(int score, String name) {
     
@@ -49,7 +50,8 @@ public class EndMenu extends Menu implements Runnable {
     sendButton = new JButton("Send your score");
     sendButton.addActionListener(new ActionListener(){
       public void actionPerformed(ActionEvent e){
-        Client(userName, userScore).postData();
+        client = new Client(userName, userScore);
+        client.postData();
       }
     });
     
