@@ -57,6 +57,7 @@ public class EndMenu extends JFrame {
         userName = fieldName.getText();
         client = new Client(userName, userScore);
         client.postData();
+        System.exit(0);
       }
     });
     
