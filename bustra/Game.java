@@ -16,15 +16,15 @@ import java.awt.event.KeyListener;
 
 import static java.awt.event.KeyEvent.*;
 
-public class Base extends JPanel implements KeyListener {
+public class Game extends JPanel implements KeyListener {
   private Board board;
-  private User player;
+  private static User player;
 
   private int boardSize;
   private boolean toggle;
   
-  public Base() {
-    boardSize = 5;
+  public Game(int size, String name) {
+    boardSize = size;
 
     setPreferredSize(new Dimension(boardSize * Constants.CIRCLE, boardSize * Constants.CIRCLE));
     
@@ -94,7 +94,7 @@ public class Base extends JPanel implements KeyListener {
     SwingUtilities.invokeLater(() -> {
       JFrame frame = new JFrame("Bustra!");       
 
-      frame.add(new Base());
+      frame.add(new Game(6, "test"));
       frame.pack();
       frame.setVisible(true);
 
