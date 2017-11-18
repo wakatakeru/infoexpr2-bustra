@@ -22,7 +22,7 @@ public class Main {
       startMenu.join();
     } catch (InterruptedException e) { /* do nothing */ }
 
-    game = new Thread(new Game(Menu.getBoardSize()));
+    game = new Thread(new Game(Menu.getUserName()));
 
     game.start();
     timer.start();
