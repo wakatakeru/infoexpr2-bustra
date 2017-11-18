@@ -22,7 +22,7 @@ public class EndMenu extends JFrame implements Runnable {
   
   private String userName;
   private int userScore;
-  private int width, hight;
+  private int width, height;
   private JLabel labelEnd, labelScore, labelName;
   private JTextField fieldName;
   private JButton sendButton;
@@ -35,7 +35,7 @@ public class EndMenu extends JFrame implements Runnable {
     p = new JPanel();
     contentPane = getContentPane();  
     width = 300;
-    height = 100;
+    height = 200;
     userScore = score;
     
     setTitle("EndMenu");
@@ -46,7 +46,7 @@ public class EndMenu extends JFrame implements Runnable {
     p.setPreferredSize(new Dimension(width, height));
     p.setFocusable(true);
     
-    labelEnd = new JLabel("Game End!");
+    labelEnd = new JLabel("Game End");
     labelEnd.setFont(new Font("Arial", Font.PLAIN, 24));
     labelScore = new JLabel("Your score is " + String.valueOf(userScore));
     fieldName = new JTextField("", 8);
@@ -63,7 +63,7 @@ public class EndMenu extends JFrame implements Runnable {
     this.add(labelEnd);
     this.add(getLine(width, 0));
     this.add(labelScore);
-    this.add(getLine(width - 18, 1));
+    this.add(getLine(width - 25, 1));
     this.add(labelName);
     this.add(fieldName);
     this.add(getLine(width, 0));
@@ -82,14 +82,14 @@ public class EndMenu extends JFrame implements Runnable {
   @Override
   public void run() {
     
-    StartMenu frame = new StartMenu();
+    EndMenu frame = new EndMenu(1);
     frame.setVisible(true);
     
   }
   
   public static void main(String args[]) {
     
-    EndMenu frame = new EndMenu();
+    EndMenu frame = new EndMenu(1);
     frame.setVisible(true);
   
   }
