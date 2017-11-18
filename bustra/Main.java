@@ -16,12 +16,13 @@ public class Main {
     Thread game;
     Thread timer = new Thread(new Timer());
     String userName;
+
     
     startMenu.start();
 
     try {
       Thread.sleep(2000);
-      startMenu.join();
+      startMenu.interrupt();
     } catch (InterruptedException e) { /* do nothing */ }
 
     game = new Thread(new Game());
@@ -43,6 +44,8 @@ public class Main {
 
     try {
       endMenu.join();
-    } catch (InterruptedException e) { /* do nothing */ }
+    } catch (InterruptedException e) {
+      System.exit(0);
+    }
   }
 }

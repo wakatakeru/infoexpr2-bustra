@@ -60,14 +60,10 @@ public class StartMenu extends JFrame implements Runnable {
   @Override
   public void run() {
     StartMenu frame = new StartMenu();
-    frame.setVisible(true);
-    try{
+    
+    try {
       Thread.sleep(2000);
-    }catch (InterruptedException e) {}
-  }
-  
-  public static void main(String args[]) {
-    StartMenu frame = new StartMenu();
-    frame.setVisible(true);
+      frame.setVisible(true);
+    } catch (InterruptedException e) {}
   }
 }
