@@ -3,7 +3,7 @@ package bustra;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Point;    
+import java.awt.Point;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -13,6 +13,11 @@ import java.util.ArrayList;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+import java.io.File;
+import java.io.IOException;
+
+import javax.sound.sampled.*;
 
 import static java.awt.event.KeyEvent.*;
 
@@ -66,25 +71,45 @@ public class Game extends JPanel implements KeyListener, Runnable {
 
   public void keyPressed(KeyEvent e) {
     int key = e.getKeyCode();
-
-    switch ( key ) {
-    case VK_SPACE:
-      toggle = !toggle;
-      if ( !toggle ) {
-        board.eraseDetectedLines();
-        // 得点更新する(Pending)
-        player.addScore(board.getErasingCount(), board.getErasedBlocksCount());
-
-        // 得点のコンソール表示
-        System.out.println(player.getScore());
-      }
-      break;
-    default:
-      // movePositionにキーを渡してplayerを移動させる
-      if ( toggle ) { board.moveBlock(player.getPosition(), key); }
-      player.movePosition(key);
-    }
+    Clip clip = null;
+    AudioInputStream audioInputStream;
     
+    try {
+      File soundFile = new File("bin//se_move01.wav");
+      audioInputStream = AudioSystem.getAudioInputStream(soundFile);
+      AudioFormat audioFormat = audioInputStream.getFormat();
+      DataLine.Info info = new DataLine.Info(Clip.class, audioFormat);
+      clip = (Clip)AudioSystem.getLine(info);
+      clip.open(audioInputStream);
+      switch ( key ) {
+      case VK_SPACE:
+        toggle = !toggle;
+        if ( !toggle ) {
+          board.eraseDetectedLines();
+          // 得点更新する(Pending)
+          player.addScore(board.getErasingCount(), board.getErasedBlocksCount());
+
+          // 得点のコンソール表示
+          System.out.println(player.getScore());
+        }
+        break;
+      default:
+        // movePositionにキーを渡してplayerを移動させる
+        if ( toggle ) {
+          clip.start();
+          board.moveBlock(player.getPosition(), key);
+        }
+        player.movePosition(key);
+      }
+      clip.stop();
+    } catch (UnsupportedAudioFileException ex) {
+      ex.printStackTrace();
+    } catch (IOException ex) {
+      ex.printStackTrace();
+    } catch (LineUnavailableException ex) {
+      ex.printStackTrace();
+    }
+
     repaint();
   }
   
