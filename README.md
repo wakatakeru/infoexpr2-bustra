@@ -35,7 +35,7 @@
     Bustra.jar ファイルを実行する
 
   - コマンドライン上での起動  
-    ディレクトリ infoexpr2-bustra 下で以下のコマンドを実行する
+    ディレクトリ infoexpr2-bustra 下で以下のコマンドを実行する  
     `java bustra.Main`
  
 ## 操作方法  
