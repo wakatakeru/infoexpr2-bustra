@@ -57,7 +57,7 @@ bustra/Constants.java にスコアサーバのアドレスが記載されてお�
 (スコアを送信しない場合は、変更しなくても問題なく遊ぶことができます。)  
 
 ## リポジトリ
-本ゲーム   : ()
+本ゲーム   : (https://github.com/wakatakeru/infoexpr2-bustra)
 スコアサーバ : (https://github.com/wakatakeru/infoexpr2-bustra-score_server)
 
 ## 素材元
