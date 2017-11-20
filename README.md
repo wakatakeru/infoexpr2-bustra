@@ -8,6 +8,7 @@
 同じ色のブロックを横に3つ並べることでブロックを消すことができます。  
 一回のブロック操作で消えたブロックの数と消した回数に応じてスコアにボーナスが付きます。  
 > 消えたブロックの数 × 1度の操作で消えた連の数 / 2 * 100 という計算式でスコアは計算されます。  
+
 ゲーム終了後にスコアサーバにスコアを送信することで、他のプレイヤーとランキングで競うことができます。  
 
 ## Runnable JAR ファイルの作成
@@ -52,17 +53,18 @@
 ## スコアサーバ
 本ゲームではスコアランキングを表示するため、スコアサーバを実装しています。  
 bustra/Constants.java にスコアサーバのアドレスが記載されており、標準ではlocalhostの3000番ポートとなっています。  
-必要に応じて bustra/Constants.java 13行目を以下の形で書き換えしてください。  
+必要に応じて bustra/Constants.java 13,14行目を以下の形で書き換えしてください。  
 `protecred static final String URL = "http://<スコアサーバのアドレス>/scores/create"`  
+protected static final String ROOT_URL = "http://<スコアサーバのアドレス>/";  
 (スコアを送信しない場合は、変更しなくても問題なく遊ぶことができます。)  
 
 ## リポジトリ
-本ゲーム   : <https://github.com/wakatakeru/infoexpr2-bustra>
-スコアサーバ : <https://github.com/wakatakeru/infoexpr2-bustra-score_server>
+本ゲーム   : <https://github.com/wakatakeru/infoexpr2-bustra>  
+スコアサーバ : <https://github.com/wakatakeru/infoexpr2-bustra-score_server>  
 
 ## 素材元
-CMAN       : <https://sozai.cman.jp/>
-otozai.com : <http://otosozai.com/>
+CMAN       : <https://sozai.cman.jp/>  
+otozai.com : <http://otosozai.com/>  
 
 ## 参考
-Bustra.java <http://guppy.eng.kagawa-u.ac.jp/2017/InfoEnvExp2/Programs2/Bustra.java>
+Bustra.java <http://guppy.eng.kagawa-u.ac.jp/2017/InfoEnvExp2/Programs2/Bustra.java>  
