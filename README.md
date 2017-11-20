@@ -51,10 +51,14 @@
 
 ## スコアサーバ
 本ゲームではスコアランキングを表示するため、スコアサーバを実装しています。  
-スコアサーバをどこで走らせるかによって不定です。  
+bustra/Constants.java にスコアサーバのアドレスが記載されており、標準ではlocalhostの3000番ポートとなっています。  
 必要に応じて bustra/Constants.java 13行目を以下の形で書き換えしてください。  
 `protecred static final String URL = "http://<スコアサーバのアドレス>/scores/create"`  
 (スコアを送信しない場合は、変更しなくても問題なく遊ぶことができます。)  
+
+## リポジトリ
+本ゲーム   : ()
+スコアサーバ : (https://github.com/wakatakeru/infoexpr2-bustra-score_server)
 
 ## 素材元
 CMAN (https://sozai.cman.jp/)
