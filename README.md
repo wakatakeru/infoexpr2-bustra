@@ -64,7 +64,6 @@ protected static final String ROOT_URL = "http://<スコアサーバのアドレ
 
 ## 素材元
 CMAN       : <https://sozai.cman.jp/>  
-otozai.com : <http://otosozai.com/>  
 
 ## 参考
 Bustra.java <http://guppy.eng.kagawa-u.ac.jp/2017/InfoEnvExp2/Programs2/Bustra.java>  
