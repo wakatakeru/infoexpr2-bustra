@@ -9,7 +9,7 @@ public class Constants {
   protected static final int RANGE_OF_COLOR = 4;
   protected static final int GAP = 4;
   protected static final int CIRCLE = BLOCKSIZE - GAP;
-  protected static final int LIMIT_TIME = 1 * 20 * 1000;
+  protected static final int LIMIT_TIME = 1 * 60 * 1000;
   protected static final String URL = "http://localhost:3000/scores/create";
   protected static final String ROOT_URL = "http://localhost:3000/";
 }
