@@ -61,19 +61,13 @@ public class Block {
   
   // 色に応じて画像を設定
   private void setFaceImage(Color faceColor) {
-    /*
+    
     try{
-      if ( faceColor == Color.RED    ) { faceImage = ImageIO.read(new File(getClass().getResource("bin//red_block.png"))); }
-      if ( faceColor == Color.BLUE   ) { faceImage = ImageIO.read(new File(getClass().getResource("bin//blue_block.png"))); }
-      if ( faceColor == Color.YELLOW ) { faceImage = ImageIO.read(new File(getClass().getResource("bin//yellow_block.png"))); }
-      if ( faceColor == Color.GREEN  ) { faceImage = ImageIO.read(new File(getClass().getResource("bin//green_block.png"))); }
+      if ( faceColor == Color.RED    ) { faceImage = ImageIO.read(getClass().getResource("/bin/red_block.png")); }
+      if ( faceColor == Color.BLUE   ) { faceImage = ImageIO.read(getClass().getResource("/bin/blue_block.png")); }
+      if ( faceColor == Color.YELLOW ) { faceImage = ImageIO.read(getClass().getResource("/bin/yellow_block.png")); }
+      if ( faceColor == Color.GREEN  ) { faceImage = ImageIO.read(getClass().getResource("/bin/green_block.png")); }
     } catch( IOException e ) { }
-    */
-    try{
-      if ( faceColor == Color.RED    ) { faceImage = ImageIO.read(new File(getClass().getResource("bin//red_block.png"))); }
-      if ( faceColor == Color.BLUE   ) { faceImage = ImageIO.read(new File(getClass().getResource("bin//blue_block.png"))); }
-      if ( faceColor == Color.YELLOW ) { faceImage = ImageIO.read(new File(getClass().getResource("bin//yellow_block.png"))); }
-      if ( faceColor == Color.GREEN  ) { faceImage = ImageIO.read(new File(getClass().getResource("bin//green_block.png"))); }
-    } catch( IOException e ) { }
+    
   }
 }
