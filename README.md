@@ -57,12 +57,12 @@ bustra/Constants.java にスコアサーバのアドレスが記載されてお�
 (スコアを送信しない場合は、変更しなくても問題なく遊ぶことができます。)  
 
 ## リポジトリ
-本ゲーム   : (https://github.com/wakatakeru/infoexpr2-bustra)
-スコアサーバ : (https://github.com/wakatakeru/infoexpr2-bustra-score_server)
+本ゲーム   : <https://github.com/wakatakeru/infoexpr2-bustra>
+スコアサーバ : <https://github.com/wakatakeru/infoexpr2-bustra-score_server>
 
 ## 素材元
-CMAN       : https://sozai.cman.jp/
-otozai.com : http://otosozai.com/
+CMAN       : <https://sozai.cman.jp/>
+otozai.com : <http://otosozai.com/>
 
 ## 参考
-Bustra.java (http://guppy.eng.kagawa-u.ac.jp/2017/InfoEnvExp2/Programs2/Bustra.java)
+Bustra.java <http://guppy.eng.kagawa-u.ac.jp/2017/InfoEnvExp2/Programs2/Bustra.java>
